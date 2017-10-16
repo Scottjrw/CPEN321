@@ -34,6 +34,9 @@ public class Student implements User {
         token = t;
         updateInfo(this_act);
     }
+    public  String getName(){
+        return this.name;
+    }
     private void updateInfo(Activity this_act) {
         String url ="http://206.87.128.30:8080/Servlet/info?token=" + token;
 

@@ -60,6 +60,7 @@ public class MainPage extends AppCompatActivity
         Bundle tokenBundle = getIntent().getExtras();
         String token = tokenBundle.getString("token");
         student_user = new Student(token,this);
+        //student_user
     }
 
     @Override
@@ -80,13 +81,14 @@ public class MainPage extends AppCompatActivity
 
         final TextView myUnameDisplay = (TextView) findViewById(R.id.Username);
         final TextView myEmailDisplay = (TextView) findViewById(R.id.Email);
+        myUnameDisplay.setText(student_user.getName());
         String url = "http://206.87.135.78:8080/Servlet/main?username=scottjr&password=123456";
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myUnameDisplay.setText(response.get("username").toString());
+                            myUnameDisplay.setText(student_user.getName());
                             myEmailDisplay.setText(response.get("email").toString());
                         }catch (JSONException e)
                         {myUnameDisplay.setText("Json exception");
