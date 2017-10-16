@@ -11,4 +11,7 @@ public interface User {
     }
     UserType getUserType();
     String getToken();
+    String getName();
+    String getUsername();
+    String getEmail();
 }

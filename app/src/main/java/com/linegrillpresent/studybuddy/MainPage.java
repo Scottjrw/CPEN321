@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SBRequestManager.SBRequestQueue;
 import Users.Student;
 
 public class MainPage extends AppCompatActivity
@@ -38,6 +38,7 @@ public class MainPage extends AppCompatActivity
         setContentView(R.layout.activity_main_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +57,14 @@ public class MainPage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
         //get Token passed in
         Bundle tokenBundle = getIntent().getExtras();
         String token = tokenBundle.getString("token");
-        student_user = new Student(token,this);
+        student_user = new Student(token);
+        student_user.updateInfo(this);
+
         //student_user
     }
 
@@ -102,7 +107,7 @@ public class MainPage extends AppCompatActivity
                     }
                 });
         // Access the RequestQueue through your singleton class.
-       SBRequestQueue.getInstance(this).addToRequestQueue(jsObjRequest);
+       //SBRequestQueue.getInstance(this).addToRequestQueue(jsObjRequest);
         return true;
     }
 
@@ -128,7 +133,12 @@ public class MainPage extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager manager = getSupportFragmentManager();
         if (id == R.id.Profile) {
-            MyprofileFragment profilefraement = MyprofileFragment.newInstance("blah","blah");
+            if(student_user.isSet == false)
+                Log.d("hello", "RI");
+            String email = student_user.getEmail();
+            String name = student_user.getName();
+            String username = student_user.getUsername();
+            MyprofileFragment profilefraement = MyprofileFragment.newInstance(username, name, email);
             manager.beginTransaction().replace(R.id.layout_for_fragments,profilefraement,profilefraement.getTag()).commit();
         } else if (id == R.id.Course) {
            MycourseFragment coursefragment = MycourseFragment.newInstance("course","1");

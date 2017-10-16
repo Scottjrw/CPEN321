@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,12 +23,14 @@ import android.widget.Toast;
 public class MyprofileFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "username";
+    private static final String ARG_PARAM2 = "name";
+    private static final String ARG_PARAM3 = "email";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String username;
+    private String name;
+    private String email;
 
     private OnFragmentInteractionListener mListener;
 
@@ -44,11 +47,12 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
      * @return A new instance of fragment MyprofileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyprofileFragment newInstance(String param1, String param2) {
+    public static MyprofileFragment newInstance(String param1, String param2, String param3) {
         MyprofileFragment fragment = new MyprofileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,8 +61,9 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            username = getArguments().getString(ARG_PARAM1);
+            name = getArguments().getString(ARG_PARAM2);
+            email = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -68,8 +73,19 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view;
         view= inflater.inflate(R.layout.fragment_myprofile, container, false);
+
+
         Button r = (Button) view.findViewById(R.id.refresh_update_info_button);
         r.setOnClickListener(this);
+
+        TextView name = (TextView) view.findViewById(R.id.tv_name);
+        TextView username = (TextView) view.findViewById(R.id.tv_username);
+        TextView email = (TextView) view.findViewById(R.id.tv_email);
+
+        name.setText((CharSequence) name);
+        username.setText((CharSequence) username);
+        email.setText((CharSequence) email);
+
         return  view;
     }
 
@@ -99,7 +115,7 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getActivity(),"BUTTON",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),"BUTTON5",Toast.LENGTH_SHORT).show();
     }
 
     /**
