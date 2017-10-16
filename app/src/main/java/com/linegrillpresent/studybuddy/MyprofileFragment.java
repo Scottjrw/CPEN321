@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import Users.Student;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,16 +23,11 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class MyprofileFragment extends Fragment implements View.OnClickListener{
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "username";
-    private static final String ARG_PARAM2 = "name";
-    private static final String ARG_PARAM3 = "email";
 
-    // TODO: Rename and change types of parameters
     private String username;
     private String name;
     private String email;
+    private int numGroups;
 
     private OnFragmentInteractionListener mListener;
 
@@ -38,21 +35,10 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyprofileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyprofileFragment newInstance(String param1, String param2, String param3) {
+    public static MyprofileFragment newInstance(Student stu) {
         MyprofileFragment fragment = new MyprofileFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        args.putString(ARG_PARAM3, param3);
+        args.putSerializable("student", stu);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,13 +46,14 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            username = getArguments().getString(ARG_PARAM1);
-            name = getArguments().getString(ARG_PARAM2);
-            email = getArguments().getString(ARG_PARAM3);
-        }
-    }
+        Student student = (Student) getArguments().getSerializable(
+                "student");
 
+        name = student.getName();
+        username = student.getUsername();
+        email = student.getEmail();
+        numGroups = student.getNumberOfGroups();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,13 +65,15 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         Button r = (Button) view.findViewById(R.id.refresh_update_info_button);
         r.setOnClickListener(this);
 
-        TextView name = (TextView) view.findViewById(R.id.tv_name);
-        TextView username = (TextView) view.findViewById(R.id.tv_username);
-        TextView email = (TextView) view.findViewById(R.id.tv_email);
+        TextView tvName = (TextView) view.findViewById(R.id.tv_name);
+        TextView tvUsername = (TextView) view.findViewById(R.id.tv_username);
+        TextView tvEmail = (TextView) view.findViewById(R.id.tv_email);
+        TextView tvnumGroups = (TextView) view.findViewById(R.id.tvnumGroup);
 
-        name.setText((CharSequence) name);
-        username.setText((CharSequence) username);
-        email.setText((CharSequence) email);
+        tvName.setText( "Hello " + name + ",");
+        tvUsername.setText("Your username is: " + username);
+        tvEmail.setText("Your email is: " + email);
+        tvnumGroups.setText("You are currently in " + numGroups + " groups!");
 
         return  view;
     }

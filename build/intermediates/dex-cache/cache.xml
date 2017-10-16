@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0a42653c7068348df1e3f323fdf7a2b31ead010f">
+        <dex dex="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_041ead80fb12bd24c73851e21a123a2a5007a9fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/miketang/.android/build-cache/47e4a1fbafb81cf8aaebe172a54dcc4ff5590502/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -18,15 +27,6 @@
         revision="26.0.1"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
         <dex dex="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee1048d49003884d7690cbc838f416de93892f26/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="a8abb60909438dd9e94b6cef58d28c2e8c5b90c2">
-        <dex dex="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_041ead80fb12bd24c73851e21a123a2a5007a9fc/classes.dex" />
     </item>
     <item
         is-multidex="true"

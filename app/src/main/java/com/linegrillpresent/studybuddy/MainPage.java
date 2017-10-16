@@ -11,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,7 +63,7 @@ public class MainPage extends AppCompatActivity
         String token = tokenBundle.getString("token");
         student_user = new Student(token);
         student_user.updateInfo(this);
-
+        student_user.updateGroupInfo(this);
         //student_user
     }
 
@@ -133,18 +132,15 @@ public class MainPage extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager manager = getSupportFragmentManager();
         if (id == R.id.Profile) {
-            if(student_user.isSet == false)
-                Log.d("hello", "RI");
-            String email = student_user.getEmail();
-            String name = student_user.getName();
-            String username = student_user.getUsername();
-            MyprofileFragment profilefraement = MyprofileFragment.newInstance(username, name, email);
+
+            MyprofileFragment profilefraement = MyprofileFragment.newInstance(student_user);
             manager.beginTransaction().replace(R.id.layout_for_fragments,profilefraement,profilefraement.getTag()).commit();
+
         } else if (id == R.id.Course) {
            MycourseFragment coursefragment = MycourseFragment.newInstance("course","1");
             manager.beginTransaction().replace(R.id.layout_for_fragments,coursefragment,coursefragment.getTag()).commit();
         } else if (id == R.id.Group) {
-            MygroupFragment groupfragment = MygroupFragment.newInstance("group","grp");
+            MygroupFragment groupfragment = MygroupFragment.newInstance(student_user);
             manager.beginTransaction().replace(R.id.layout_for_fragments,groupfragment,groupfragment.getTag()).commit();
         } else if (id == R.id.Setting) {
 

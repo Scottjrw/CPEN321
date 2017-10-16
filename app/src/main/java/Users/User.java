@@ -14,4 +14,5 @@ public interface User {
     String getName();
     String getUsername();
     String getEmail();
+    //int getNumberOfGroups();
 }
