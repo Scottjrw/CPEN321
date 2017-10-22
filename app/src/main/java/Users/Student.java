@@ -36,7 +36,7 @@ public class Student implements User, Serializable {
     public boolean isSet;
 
     public void  updateGroupInfo(Activity this_act) {
-        String url ="http://206.87.128.30:8080/Servlet/group?token=" + token + "&action=listGroup";
+        String url ="http://206.87.128.138:8080/Servlet/group?token=" + token + "&action=listGroup";
         final Activity activity = this_act;
 
         JsonArrayRequest  jsonArrayRequest = new JsonArrayRequest
@@ -67,7 +67,7 @@ public class Student implements User, Serializable {
     }
 
     public void updateInfo(Activity this_act) {
-        String url ="http://206.87.128.30:8080/Servlet/main?token=" + token;
+        String url ="http://206.87.128.138:8080/Servlet/main?token=" + token;
         final Activity activity = this_act;
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

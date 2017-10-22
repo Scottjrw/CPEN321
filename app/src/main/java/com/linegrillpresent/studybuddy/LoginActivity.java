@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etName = (EditText) findViewById(R.id.textUsername);
         final Button bLogin = (Button) findViewById(R.id.buttonLogin);
         final TextView registerLink = (TextView) findViewById(R.id.textRN);
-        final TextView test = (TextView) findViewById(R.id.textTest);
-        final TextView console = (TextView) findViewById(R.id.console);
+        //final TextView test = (TextView) findViewById(R.id.textTest);
+        //final TextView console = (TextView) findViewById(R.id.console);
 
         //final RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = etName.getText().toString();
                 final String password = etPassword.getText().toString();
 
-                console.setText(username);
-                String url ="http://206.87.128.30:8080/Servlet/login?username=" + username + "&password=" + password;
+                //console.setText(username);
+                String url ="http://206.87.128.138:8080/Servlet/login?username=" + username + "&password=" + password;
 
                 // Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 String resText = response.toString();
-                                test.setText("Response is: "+ resText);
+                                //test.setText("Response is: "+ resText);
                                 if(resText.equals("failed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                     builder.setMessage("LOGIN FAILED")
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        test.setText("That didn't work!");
+                       // test.setText("That didn't work!");
                     }
                 });
                 // Add the request to the RequestQueue.

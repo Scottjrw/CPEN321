@@ -62,7 +62,7 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         view= inflater.inflate(R.layout.fragment_myprofile, container, false);
 
 
-        Button r = (Button) view.findViewById(R.id.refresh_update_info_button);
+        Button r = (Button) view.findViewById(R.id.btn_refreshProfile);
         r.setOnClickListener(this);
 
         TextView tvName = (TextView) view.findViewById(R.id.tv_name);

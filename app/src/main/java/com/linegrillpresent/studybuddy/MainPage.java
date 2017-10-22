@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import SBRequestManager.SBRequestQueue;
 import Users.Student;
 
 public class MainPage extends AppCompatActivity
@@ -58,6 +60,8 @@ public class MainPage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        Log.d("cpen", "oncreate");
+
         //get Token passed in
         Bundle tokenBundle = getIntent().getExtras();
         String token = tokenBundle.getString("token");
@@ -81,18 +85,21 @@ public class MainPage extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main_page, menu);
+
+        Log.d("cpen", "menu");
 
         final TextView myUnameDisplay = (TextView) findViewById(R.id.Username);
         final TextView myEmailDisplay = (TextView) findViewById(R.id.Email);
-        myUnameDisplay.setText(student_user.getName());
-        String url = "http://206.87.135.78:8080/Servlet/main?username=scottjr&password=123456";
+
+        String url = "http://206.87.135.138:8080/Servlet/main?token=" + token;
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myUnameDisplay.setText(student_user.getName());
+                            myUnameDisplay.setText(response.get("name").toString());
                             myEmailDisplay.setText(response.get("email").toString());
                         }catch (JSONException e)
                         {myUnameDisplay.setText("Json exception");
@@ -106,7 +113,9 @@ public class MainPage extends AppCompatActivity
                     }
                 });
         // Access the RequestQueue through your singleton class.
-       //SBRequestQueue.getInstance(this).addToRequestQueue(jsObjRequest);
+       SBRequestQueue.getInstance(this).addToRequestQueue(jsObjRequest);
+       // myUnameDisplay.setText(student_user.getName());
+       // myEmailDisplay.setText(student_user.getEmail());
         return true;
     }
 

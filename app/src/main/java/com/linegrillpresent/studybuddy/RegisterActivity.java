@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -33,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
 
 
-        final TextView test1 = (TextView) findViewById(R.id.test1);
-        final TextView test2 = (TextView) findViewById(R.id.test2);
+        //final TextView test1 = (TextView) findViewById(R.id.test1);
+        //final TextView test2 = (TextView) findViewById(R.id.test2);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,17 +45,17 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-                String url ="http://206.87.128.30:8080/Servlet/register?username=" + username + "&password=" + password
+                String url ="http://206.87.128.138:8080/Servlet/register?username=" + username + "&password=" + password
                                             +"&email="+ email + "&studentName=" + name;
 
-                test1.setText(url);
+                //test1.setText(url);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 String resText = response.toString();
-                                test2.setText(resText);
+                                //test2.setText(resText);
                                 //test.setText("Response is: "+ resText);
                                 if(resText.equals("succeed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);

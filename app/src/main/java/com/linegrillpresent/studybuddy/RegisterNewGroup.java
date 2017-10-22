@@ -40,7 +40,7 @@ public class RegisterNewGroup extends AppCompatActivity {
                 Bundle bundle = getIntent().getExtras();
 
                 final Student student = (Student) bundle.getSerializable("student");
-                String url ="http://206.87.128.30:8080/Servlet/group?token=" + student.getToken() + "&action=createGroup&groupName=" + name;
+                String url ="http://206.87.128.138:8080/Servlet/group?token=" + student.getToken() + "&action=createGroup&groupName=" + name;
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {

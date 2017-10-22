@@ -7,7 +7,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/refresh_update_info_button"
+        android:id="@+id/btn_refreshProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
