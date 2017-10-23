@@ -67,12 +67,6 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
             }
         });
 
-
-
-
-
-
-
         courseSpinner = (Spinner) findViewById(R.id.sp_courseNames);
         numSpinner = (Spinner) findViewById(R.id.sp_num);
         course = UISystem.getInstance().getCourseNames(this);
@@ -107,10 +101,6 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 int course_num = Integer.parseInt(numSpinner.getSelectedItem().toString());
                 int course_id = UISystem.getInstance().getCourseID(course_name, course_num);
 
-                /*
-                Bundle bundle = getIntent().getExtras();
-                final Student student = (Student) bundle.getSerializable("student");
-                */
                 final Student student = Student.getInstance();
 
                 /*
@@ -121,9 +111,9 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 String staticURL = getResources().getString(R.string.deployURL) + "group?";
                 String url = staticURL + "token=" + student.getToken() + "&isPrivate=" + privateOrNot +
                              "&groupName=" + name +
-                             "&inviteCode=" + inviteCode +
+                             "&inviteCode=" + inCode +
                              "&courseId=" + course_id +
-                             "action=createGroup";
+                             "&action=createGroup";
 
                 Log.d("newgroup", url);
 
@@ -133,7 +123,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                             public void onResponse(String response) {
                                 String resText = response.toString();
 
-                                if(resText.equals("failed") ) {
+                                if("failed".equals(resText)) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewGroup.this);
                                     builder.setMessage("Fail to create the group")
                                             .setNegativeButton("RETRY", null)
@@ -189,7 +179,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+    /*Do not need to add anything here..*/
     }
 
 

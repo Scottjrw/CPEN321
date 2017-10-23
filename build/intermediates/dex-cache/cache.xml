@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="96d875e5af167f9aed2661cc818381c2aae70192">
+        <dex dex="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_041ead80fb12bd24c73851e21a123a2a5007a9fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/miketang/AndroidStudioProjects/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0fdccedd344e4f29d7626f21840099013217840d/classes.dex" />
+    </item>
+
+</items>
