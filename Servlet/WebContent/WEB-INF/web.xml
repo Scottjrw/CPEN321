@@ -12,6 +12,11 @@
 	</servlet>
 	
 	<servlet>
+	 <servlet-name>CourseService</servlet-name>
+	 <servlet-class>com.scott.service.CourseService</servlet-class>
+	</servlet>
+	
+	<servlet>
 	 <servlet-name>GroupService</servlet-name>
 	 <servlet-class>com.scott.service.GroupService</servlet-class>
 	</servlet>
@@ -39,6 +44,11 @@
 	<servlet-mapping>
 	 <servlet-name>MainService</servlet-name>
 	 <url-pattern>/main</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	 <servlet-name>CourseService</servlet-name>
+	 <url-pattern>/course</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>

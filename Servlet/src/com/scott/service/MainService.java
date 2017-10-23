@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.scott.ConnectionFactory;
 import com.scott.dao.GroupDao;
@@ -26,14 +24,13 @@ public class MainService extends HttpServlet {
 
 	 @Override
 	 public void init() throws ServletException {
-	     // 初始化（不带参数）
 	     System.out.println("init without parameters ======");
 	     super.init();
 	 }
 
 	 @Override
 	 public void init(ServletConfig config) throws ServletException {
-	     // 初始化（带参数）
+
 	     System.out.println("init with parameters ======");
 	     super.init(config);
 	 }
@@ -41,7 +38,7 @@ public class MainService extends HttpServlet {
 	 @Override
 	 protected void service(HttpServletRequest req, HttpServletResponse resp)
 	         throws ServletException, IOException {
-	     // 调用次数跟请求次数有关
+
 	     System.out.println("service ======");
 	     super.service(req, resp);
 	 }
@@ -57,7 +54,6 @@ public class MainService extends HttpServlet {
 	 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	         throws ServletException, IOException {
 
-		// 接收程序get请求时执行的操作
 	        System.out.println("doGet ======");
 
 	        String token = req.getParameter("token");
@@ -67,7 +63,7 @@ public class MainService extends HttpServlet {
 	        try {
 	            Connection conn = ConnectionFactory.getInstance().makeConnection();
 
-	            // 查询用户数据
+
 	            UserDao userDao = new UserDaoImpl();
 	            User user = userDao.getUserByToken(conn, token);
 	            if(user!=null){
@@ -82,8 +78,7 @@ public class MainService extends HttpServlet {
 	            	object.addProperty("username", user.getName());
 	            	object.addProperty("email", user.getEmail());
 	            	object.addProperty("studentName", user.getStudentName());
-	            	//pw.println("succeed");
-	            	//pw.println(new Gson().toJson(user));
+
 	            	pw.println(object);
 	            	pw.close();
 	            }
@@ -99,7 +94,6 @@ public class MainService extends HttpServlet {
 	 protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	         throws ServletException, IOException {
 
-	     // 接收程序post请求时执行的操作
 	     System.out.println("doPost ======");
 	 }
 }

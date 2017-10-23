@@ -14,7 +14,7 @@ public class ConnectionFactory {
 	 private String user;
 	 private String password;
 
-	 private Connection conn;
+	 //private Connection conn;
 
 	 private ConnectionFactory(){
 	     // 解析配置文件
@@ -44,6 +44,7 @@ public class ConnectionFactory {
 
 	 public Connection makeConnection(){
 	     // connect to db
+		 Connection conn = null;
 	     try {
 	         Class.forName(driver);
 	         conn = DriverManager.getConnection(dburl, user, password);

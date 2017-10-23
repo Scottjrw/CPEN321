@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.scott.ConnectionFactory;
 import com.scott.dao.UserDao;
 import com.scott.dao.UserDaoImpl;

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.scott.model.Course;
+
 public class GroupDaoImpl implements GroupDao{
 
 	@Override
@@ -35,20 +37,26 @@ public class GroupDaoImpl implements GroupDao{
 	}
 
 	@Override
-	public void insertGroup(Connection conn, String groupName, String username) throws SQLException{
+	public void insertGroup(Connection conn, String groupName, String username, int courseId, 
+			String inviteCode, int isPrivate) throws SQLException{
 		PreparedStatement ps = conn.prepareCall(
-	             "INSERT INTO study_buddy.group(username, group_name, is_admin) VALUES (?, ?, ?)");
+	             "INSERT INTO study_buddy.group(username, group_name, is_admin, is_private, course_id, invite_code) "
+	             + "VALUES (?, ?, ?, ?, ?, ?)");
 	     ps.setString(1, username);
 	     ps.setString(2, groupName);
 	     ps.setBoolean(3, true);
+	     if(isPrivate==1) ps.setBoolean(4, true);
+	     else ps.setBoolean(4, false);
+	     ps.setInt(5, courseId);
+	     ps.setString(6, inviteCode);
 	     ps.execute();
 		
 	}
 
 	@Override
-	public void addGroup(Connection conn, String groupName, String username) throws SQLException{
+	public void joinGroup(Connection conn, String groupName, String username) throws SQLException{
 		PreparedStatement ps = conn.prepareCall(
-	             "INSERT INTO study_buddy.group(username, group_name, is_admin) VALUES (?, ?, ?)");
+				"INSERT INTO study_buddy.group(username, group_name, is_admin) VALUES (?, ?, ?) ");
 	     ps.setString(1, username);
 	     ps.setString(2, groupName);
 	     ps.setBoolean(3, false);
