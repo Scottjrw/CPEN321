@@ -26,7 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import SBRequestManager.SBRequestQueue;
-import Users.Student;
+import user.Student;
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,MycourseFragment.OnFragmentInteractionListener,MyprofileFragment.OnFragmentInteractionListener

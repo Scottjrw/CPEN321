@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etName = (EditText) findViewById(R.id.textUsername);
         final Button bLogin = (Button) findViewById(R.id.buttonLogin);
         final TextView registerLink = (TextView) findViewById(R.id.textRN);
-        //final TextView test = (TextView) findViewById(R.id.textTest);
-        //final TextView console = (TextView) findViewById(R.id.console);
 
-        //final RequestQueue queue = Volley.newRequestQueue(this);
 
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
 
@@ -48,15 +46,15 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = etName.getText().toString();
                 final String password = etPassword.getText().toString();
 
-                //console.setText(username);
-                String url ="http://206.87.128.138:8080/Servlet/login?username=" + username + "&password=" + password;
-
+                String staticURL = getResources().getString(R.string.deployURL) + "login?";
+                String url =  staticURL + "username=" + username + "&password=" + password;
+                Log.d("login", url);
                 // Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                String resText = response.toString();
+                                String resText = response;
                                 //test.setText("Response is: "+ resText);
                                 if(resText.equals("failed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -78,11 +76,15 @@ public class LoginActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       // test.setText("That didn't work!");
+                       // access the server fail
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setMessage("ACCESS SERVER FAILED")
+                                .setNegativeButton("RETRY LATER", null)
+                                .create()
+                                .show();
                     }
                 });
-                // Add the request to the RequestQueue.
-                //queue.add(stringRequest);
+                // Add the request to the RequestQueue
                 SBQueue.addToRequestQueue(stringRequest);
             }
         });

@@ -32,9 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
 
 
-        //final TextView test1 = (TextView) findViewById(R.id.test1);
-        //final TextView test2 = (TextView) findViewById(R.id.test2);
-
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,19 +41,16 @@ public class RegisterActivity extends AppCompatActivity {
                 final String name = etName.getText().toString();
 
 
-
-                String url ="http://206.87.128.138:8080/Servlet/register?username=" + username + "&password=" + password
+                String staticURL = getResources().getString(R.string.deployURL) + "register?";
+                String url = staticURL + "username=" + username + "&password=" + password
                                             +"&email="+ email + "&studentName=" + name;
-
-                //test1.setText(url);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 String resText = response.toString();
-                                //test2.setText(resText);
-                                //test.setText("Response is: "+ resText);
+
                                 if(resText.equals("succeed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("Register Succeed, Plase Login")
@@ -88,15 +82,18 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //test.setText("That didn't work!");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("ACCESS SERVER FAILED")
+                                .setNegativeButton("RETRY LATER", null)
+                                .create()
+                                .show();
                     }
                 });
 
 
                 // Add the request to the RequestQueue.
-                //queue.add(stringRequest);
                 SBQueue.addToRequestQueue(stringRequest);
 
-               // queue.add(registerRequest);
             }
         });
 

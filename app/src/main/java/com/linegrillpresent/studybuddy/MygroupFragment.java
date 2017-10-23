@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import Users.Student;
+import system.UISystem;
+import user.Student;
 
 
 /**
@@ -48,6 +49,7 @@ public class MygroupFragment extends Fragment {
                 "student");
 
 
+        UISystem.getInstance().getCourseNames(getActivity());
     }
 
     @Override
