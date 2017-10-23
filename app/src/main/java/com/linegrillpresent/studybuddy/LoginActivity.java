@@ -56,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 String resText = response;
                                 //test.setText("Response is: "+ resText);
-                                if(resText.equals("failed") ) {
+                                //if(resText.equals("failed") ) {
+                                 if("failed".equals(resText)) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                     builder.setMessage("LOGIN FAILED")
                                             .setNegativeButton("RETRY", null)
