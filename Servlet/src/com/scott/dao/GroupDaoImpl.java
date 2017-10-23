@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.scott.model.Course;
-
 public class GroupDaoImpl implements GroupDao{
 
 	@Override

@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.scott.model.Course;
-
 public interface GroupDao {
 	List<String> getGroupByUsername(Connection conn, String username)throws SQLException;
 	List<String> getUserByGroupName(Connection conn, String groupName)throws SQLException;
