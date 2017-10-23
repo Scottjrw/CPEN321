@@ -26,15 +26,35 @@ import SBRequestManager.SBRequestQueue;
 
 public class Student implements User, Serializable {
 
-    private final String token;
+    private String token;
     private String name;
     private String email;
     private String username;
     private int numberOfCourses;
     private int numberOfGroups;
     private List<String> groups;
+    private List<String> courses;
     private String motto;
     public boolean isSet;
+
+    private static Student instance;
+
+    private Student() {
+        isSet = false;
+        groups = new ArrayList<String>();
+        courses = new ArrayList<String>();
+    }
+
+    public void setToken(String s) {
+        token = s;
+    }
+
+    public static Student getInstance() {
+        if(instance == null)
+            instance = new Student();
+        return instance;
+    }
+
 
     public void  updateGroupInfo(Activity this_act) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "group?";
@@ -109,11 +129,6 @@ public class Student implements User, Serializable {
 
     }
 
-    public Student(String t){
-        token = t;
-        isSet = false;
-        groups = new ArrayList<String>();
-    }
 
     @Override
     public UserType getUserType() {
@@ -143,4 +158,6 @@ public class Student implements User, Serializable {
     public int getNumberOfGroups() {return numberOfGroups;}
 
     public List<String> getGroups() {return groups;}
+
+    public List<String> getCourses() {return courses;}
 }

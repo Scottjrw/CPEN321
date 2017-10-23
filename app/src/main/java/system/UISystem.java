@@ -40,7 +40,14 @@ public class UISystem {
     }
 
 
-
+    public int getCourseID(String name, int num) {
+        for(int i = 0;i < courseNames.size();i++) {
+            Course c = courseNames.get(i);
+            if(c.getName().equals(name) && c.getNum() == num)
+                return c.getID();
+        }
+        return -1;
+    }
 
     public List<String> getAllCourseNum(String name) {
         List<String> returnList = new ArrayList<String>();

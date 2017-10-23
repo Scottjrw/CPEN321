@@ -65,7 +65,8 @@ public class MainPage extends AppCompatActivity
         //get Token passed in
         Bundle tokenBundle = getIntent().getExtras();
         String token = tokenBundle.getString("token");
-        student_user = new Student(token);
+        student_user = Student.getInstance();
+        student_user.setToken(token);
         student_user.updateInfo(this);
         student_user.updateGroupInfo(this);
         //student_user

@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -43,6 +45,32 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         Button btm = (Button) findViewById(R.id.btm_RegisterGroup);
 
 
+        final Switch isPrivate = (Switch) findViewById(R.id.sw_private);
+        final EditText inviteCode = (EditText) findViewById(R.id.et_inviteC);
+        inviteCode.setVisibility(View.INVISIBLE);
+
+        isPrivate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton cb, boolean on){
+                if(on)
+                {
+                    //Do something when Switch button is on/checked
+                    //tView.setText("Switch is on.....");
+                    inviteCode.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    //Do something when Switch is off/unchecked
+                    //tView.setText("Switch is off.....");
+                    inviteCode.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+
+
+
+
 
 
         courseSpinner = (Spinner) findViewById(R.id.sp_courseNames);
@@ -69,21 +97,42 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
             public void onClick(View v) {
 
                 String name = et_name.getText().toString();
+                int privateOrNot;
+                if(isPrivate.isChecked())
+                    privateOrNot = 1;
+                else privateOrNot = 0;
+                String inCode = inviteCode.getText().toString();
 
+                String course_name = courseSpinner.getSelectedItem().toString();
+                int course_num = Integer.parseInt(numSpinner.getSelectedItem().toString());
+                int course_id = UISystem.getInstance().getCourseID(course_name, course_num);
+
+                /*
                 Bundle bundle = getIntent().getExtras();
-
                 final Student student = (Student) bundle.getSerializable("student");
-                String url ="http://206.87.128.138:8080/Servlet/group?token=" + student.getToken() + "&action=createGroup&groupName=" + name;
+                */
+                final Student student = Student.getInstance();
 
+                /*
+                http://localhost:8080/Servlet/group?token=5256d241-4810-4650-8287-3ff16dfe12f3
+                &isPrivate=0
+                &groupName=112&inviteCode=&courseId=1&action=createGroup
+                 */
+                String staticURL = getResources().getString(R.string.deployURL) + "group?";
+                String url = staticURL + "token=" + student.getToken() + "&isPrivate=" + privateOrNot +
+                             "&groupName=" + name +
+                             "&inviteCode=" + inviteCode +
+                             "&courseId=" + course_id +
+                             "action=createGroup";
 
-
+                Log.d("newgroup", url);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 String resText = response.toString();
-                                //test.setText("Response is: "+ resText);
+
                                 if(resText.equals("failed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewGroup.this);
                                     builder.setMessage("Fail to create the group")
@@ -116,8 +165,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                         //test.setText("That didn't work!");
                     }
                 });
-                // Add the request to the RequestQueue.
-                //queue.add(stringRequest);
+                // Add the request to the RequestQueue
                 SBQueue.addToRequestQueue(stringRequest);
             }
         });

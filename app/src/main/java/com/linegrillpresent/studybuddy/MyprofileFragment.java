@@ -46,9 +46,11 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         Student student = (Student) getArguments().getSerializable(
                 "student");
-
+    */
+        Student student = Student.getInstance();
         name = student.getName();
         username = student.getUsername();
         email = student.getEmail();
