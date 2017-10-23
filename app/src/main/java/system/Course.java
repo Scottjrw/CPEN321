@@ -8,11 +8,12 @@ public class Course {
     private int id;
     private int num;
     private String name;
-
+    private  String courseFullName;
     public Course(int id, String name, int num) {
         this.id = id;
         this.name = name;
         this.num = num;
+        courseFullName = name + " " + Integer.toString(num);
     }
 
     public int getID() {
@@ -25,5 +26,9 @@ public class Course {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getFullName(){
+        return  courseFullName;
     }
 }

@@ -1,12 +1,20 @@
 package com.linegrillpresent.studybuddy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import user.Student;
 
 
 /**
@@ -42,6 +50,7 @@ public class MycourseFragment extends Fragment {
      * @return A new instance of fragment MycourseFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     public static MycourseFragment newInstance(String param1, String param2) {
         MycourseFragment fragment = new MycourseFragment();
         Bundle args = new Bundle();
@@ -64,7 +73,28 @@ public class MycourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mycourse, container, false);
+        View view = inflater.inflate(R.layout.fragment_mycourse, container, false);
+        ListView listView = (ListView) view.findViewById(R.id.course_listview);
+        TextView overview = (TextView) view.findViewById(R.id.course_tv_overview);
+        Button btm = (Button) view.findViewById(R.id.btm_jnc);
+        Student student= Student.getInstance();
+        btm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userMainIntent = new Intent(getActivity(), RegisterNewCourse.class);
+                getActivity().startActivity(userMainIntent);
+            }
+        });
+
+        overview.setText("You have registered for " + student.getNumberOfCourses() + " courses:");
+        Log.d("onclickcourse", "onCreateView: " + student.getNumberOfCourses());
+        String[] listItems = new String [student.getNumberOfCourses()];
+        for(int i = 0;i < student.getNumberOfCourses();i++)
+            listItems[i] = student.getCourses().get(i).getFullName();
+        //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);
+        listView.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

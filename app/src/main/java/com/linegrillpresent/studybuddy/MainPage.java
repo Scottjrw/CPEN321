@@ -68,7 +68,9 @@ public class MainPage extends AppCompatActivity
         student_user = Student.getInstance();
         student_user.setToken(token);
         student_user.updateInfo(this);
+        student_user.updateCourseInfo(this);
         student_user.updateGroupInfo(this);
+
         //student_user
     }
 
@@ -147,7 +149,7 @@ public class MainPage extends AppCompatActivity
             manager.beginTransaction().replace(R.id.layout_for_fragments,profilefraement,profilefraement.getTag()).commit();
 
         } else if (id == R.id.Course) {
-           MycourseFragment coursefragment = MycourseFragment.newInstance("course","1");
+           MycourseFragment coursefragment = MycourseFragment.newInstance("course","blablah");
             manager.beginTransaction().replace(R.id.layout_for_fragments,coursefragment,coursefragment.getTag()).commit();
         } else if (id == R.id.Group) {
             MygroupFragment groupfragment = MygroupFragment.newInstance(student_user);
