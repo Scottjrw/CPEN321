@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import SBRequestManager.SBRequestQueue;
+import system.Course;
 
 /**
  * Created by Ao on 2017-10-15.
@@ -33,7 +34,7 @@ public class Student implements User, Serializable {
     private int numberOfCourses;
     private int numberOfGroups;
     private List<String> groups;
-    private List<String> courses;
+    private List<Course> courses;
     private String motto;
     public boolean isSet;
 
@@ -42,7 +43,7 @@ public class Student implements User, Serializable {
     private Student() {
         isSet = false;
         groups = new ArrayList<String>();
-        courses = new ArrayList<String>();
+        courses = new ArrayList<Course>();
     }
 
     public void setToken(String s) {
@@ -84,6 +85,43 @@ public class Student implements User, Serializable {
                         // fail to receive the student'info based on the token
 
 
+                    }
+                });
+        SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
+    }
+
+
+    public void  updateCourseInfo(Activity this_act) {
+        String staticURL = this_act.getResources().getString(R.string.deployURL) + "course?";
+        String url = staticURL + "token=" + token + "&action=listCourses";
+        final Activity activity = this_act;
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        //receive the list of all course name
+                        int length = response.length();
+                        numberOfCourses = length;
+                        for(int i = 0; i < length;i++)
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                String courseName = object.getString("courseName");
+                                int courseNum = object.getInt("courseNum");
+                                int courseID = object.getInt("id");
+                                Course course = new Course(courseID, courseName, courseNum);
+                                courses.add(course);
+                                Log.d("helloCourse", "onResponse: "+ courseName + courseNum + courseID);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        Log.d("helloCourse", "length is " + length);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // fail to receive the student'info based on the token
                     }
                 });
         SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
@@ -160,5 +198,7 @@ public class Student implements User, Serializable {
 
     public List<String> getGroups() {return groups;}
 
-    public List<String> getCourses() {return courses;}
+    public List<Course> getCourses() {return courses;}
+
+    public  int getNumberOfCourses(){return  numberOfCourses;}
 }
