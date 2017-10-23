@@ -37,9 +37,9 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
 
     public static MyprofileFragment newInstance(Student stu) {
         MyprofileFragment fragment = new MyprofileFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("student", stu);
-        fragment.setArguments(args);
+       // Bundle args = new Bundle();
+       // args.putSerializable("student", stu);
+       // fragment.setArguments(args);
         return fragment;
     }
 

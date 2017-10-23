@@ -24,6 +24,7 @@
             android:label="StudyBuddy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterNewGroup"></activity>
+        <activity android:name=".RegisterNewCourse"></activity>
     </application>
 
 </manifest>

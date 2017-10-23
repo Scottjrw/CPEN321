@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import system.UISystem;
 import user.Student;
 
 
@@ -36,20 +35,17 @@ public class MygroupFragment extends Fragment {
 
     public static MygroupFragment newInstance(Student stu) {
         MygroupFragment fragment = new MygroupFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("student", stu);
-        fragment.setArguments(args);
+       // Bundle args = new Bundle();
+       // args.putSerializable("student", stu);
+       // fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         student = (Student) getArguments().getSerializable(
-                "student");
+         student = Student.getInstance();
 
-
-        UISystem.getInstance().getCourseNames(getActivity());
     }
 
     @Override
@@ -65,9 +61,6 @@ public class MygroupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent userMainIntent = new Intent(getActivity(), RegisterNewGroup.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("student", student);
-                userMainIntent.putExtras(bundle);
                 getActivity().startActivity(userMainIntent);
             }
         });

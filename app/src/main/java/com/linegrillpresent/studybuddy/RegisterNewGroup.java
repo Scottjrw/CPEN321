@@ -25,10 +25,9 @@ import java.util.List;
 
 import SBRequestManager.SBRequestQueue;
 import system.Course;
-import system.UISystem;
 import user.Student;
 
-public class RegisterNewGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegisterNewGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private Spinner courseSpinner;
     private Spinner numSpinner;
@@ -37,7 +36,11 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+      try{
+          super.onCreate(savedInstanceState);
+      }catch (Exception e){
+          Log.d("caosinimabi", "WORINIMABI");
+      }
         setContentView(R.layout.activity_register_new_group);
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
         final EditText et_name = (EditText) findViewById(R.id.et_GroupName);
@@ -75,7 +78,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
         courseSpinner = (Spinner) findViewById(R.id.sp_courseNames);
         numSpinner = (Spinner) findViewById(R.id.sp_num);
-        course = UISystem.getInstance().getCourseNames(this);
+        course = (ArrayList<Course>) Student.getInstance().getCourses();
         courseNames = new ArrayList<String>();
 
         for(int i = 0; i < course.size();i++) {
@@ -105,7 +108,12 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
                 String course_name = courseSpinner.getSelectedItem().toString();
                 int course_num = Integer.parseInt(numSpinner.getSelectedItem().toString());
-                int course_id = UISystem.getInstance().getCourseID(course_name, course_num);
+                int course_id = -1;
+                for(int i = 0;i < course.size();i++) {
+                    Course c = course.get(i);
+                    if(c.getName().equals(course_name) && c.getNum() == course_num)
+                        course_id = c.getID();
+                }
 
                 /*
                 Bundle bundle = getIntent().getExtras();
@@ -121,9 +129,9 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 String staticURL = getResources().getString(R.string.deployURL) + "group?";
                 String url = staticURL + "token=" + student.getToken() + "&isPrivate=" + privateOrNot +
                              "&groupName=" + name +
-                             "&inviteCode=" + inviteCode +
+                             "&inviteCode=" + inCode +
                              "&courseId=" + course_id +
-                             "action=createGroup";
+                             "&action=createGroup";
 
                 Log.d("newgroup", url);
 
@@ -175,11 +183,13 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position,
-                               long id) {
-//  设置第二个控件给定数据源绑定适配器
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String courseName = courseNames.get(position).trim();
-        List<String> numbers = UISystem.getInstance().getAllCourseNum(courseName);
+        List<String> numbers = new ArrayList<>();
+        for(int i = 0;i < courseNames.size();i++)
+            if(course.get(i).getName().equals(courseName))
+                numbers.add(Integer.toString(course.get(i).getNum()));
+
         Log.d("newgroup", Integer.toString(numbers.size()));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
@@ -191,6 +201,4 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
 }

@@ -14,7 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import system.Course;
  * Created by Ao on 2017-10-15.
  */
 
-public class Student implements User, Serializable {
+public class Student implements User {
 
     private String token;
     private String name;
