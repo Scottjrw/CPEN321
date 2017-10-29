@@ -70,7 +70,8 @@ public class Student implements User {
                         int length = response.length();
                         for(int i = 0; i < length;i++)
                             try {
-                                groups.add(response.getString(i));
+                                if(!groups.contains(response.getString(i)))
+                                    groups.add(response.getString(i));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
