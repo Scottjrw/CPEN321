@@ -37,78 +37,174 @@
         <LinearLayout
             android:id="@+id/LayoutDisBoard"
             android:layout_width="match_parent"
-            android:layout_height="325dp"
-            android:orientation="horizontal">
+            android:layout_height="261dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_DBTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/LayoutDisTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_DBTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Discuss Board Here" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutDisListview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Discuss Board Here" />
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/listview_disBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LayoutPostNew"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp">
 
-            <TextView
-                android:id="@+id/tv_newPostTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="New Post Here" />
+            <LinearLayout
+                android:id="@+id/LayoutTypeinField"
+                android:layout_width="match_parent"
+                android:layout_height="81dp"
+                android:inputType="textMultiLine"
+                android:lines="8">
+
+                <EditText
+                    android:id="@+id/et_typeinfield"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:hint="Type your New Message!"
+
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:text=""
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_Post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Post!" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutright"
-        android:layout_width="116dp"
-        android:layout_height="379dp"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toRightOf="@+id/linearLayoutLeft"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="147dp"
+        android:layout_height="480dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/linearLayoutLeft"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.466">
 
         <LinearLayout
             android:id="@+id/LinearLayoutRightUp"
             android:layout_width="match_parent"
             android:layout_height="117dp"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <TextView
-                android:id="@+id/tv_announcementTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/LayoutAnnouncementTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Announcement"
-                android:textSize="18sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_announcementTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Announcement"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutAnnouncementText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1.70"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_anounceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="96dp"
+                    android:singleLine="false"
+                    android:text="testverylonglonglonglonglonglonglonglonglonglonglonglonglongString" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LinearLayoutRightDown"
-            android:layout_width="match_parent"
-            android:layout_height="283dp"
-            android:orientation="horizontal"
+            android:layout_width="151dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp">
 
-            <TextView
-                android:id="@+id/tv_GroupMemTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/LayoutGroupMemTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="GroupMem"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_GroupMemTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="GroupMem"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutGroupMemList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/listview_GroupMemList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
