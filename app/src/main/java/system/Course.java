@@ -31,4 +31,10 @@ public class Course {
     public String getFullName(){
         return  courseFullName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Course anotherCourse = (Course) obj;
+        return  (this.getFullName().equals(anotherCourse.getFullName()));
+    }
 }

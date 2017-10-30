@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                     /* success Login
                                        Save the token in a Bundle object and pass it to the userMainActivity
                                      */
-                                    Intent userMainIntent = new Intent(LoginActivity.this, MainPage.class);
+                                    Intent userMainIntent = new Intent(LoginActivity.this, WaitActivity.class);
                                     Bundle bundle = new Bundle();
                                     bundle.putString("token", resText);
                                     userMainIntent.putExtras(bundle);

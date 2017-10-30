@@ -89,7 +89,6 @@ public class Student implements User {
         SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
     }
 
-
     public void  updateCourseInfo(Activity this_act) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "course?";
         String url = staticURL + "token=" + token + "&action=listCourses";
@@ -109,7 +108,8 @@ public class Student implements User {
                                 int courseNum = object.getInt("courseNum");
                                 int courseID = object.getInt("id");
                                 Course course = new Course(courseID, courseName, courseNum);
-                                courses.add(course);
+                                if(!courses.contains(course))
+                                    courses.add(course);
                                 Log.d("helloCourse", "onResponse: "+ courseName + courseNum + courseID);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -155,16 +155,12 @@ public class Student implements User {
                         }
                     }
                 }, new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // fail to receive the student'info based on the token
-
-
                     }
                 });
         SBRequestQueue.getInstance(activity).addToRequestQueue(jsObjRequest);
-
     }
 
 
@@ -200,4 +196,5 @@ public class Student implements User {
     public List<Course> getCourses() {return courses;}
 
     public  int getNumberOfCourses(){return  numberOfCourses;}
+
 }

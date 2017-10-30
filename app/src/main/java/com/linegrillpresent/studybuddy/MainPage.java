@@ -17,15 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import SBRequestManager.SBRequestQueue;
+import system.Utility;
 import user.Student;
 
 public class MainPage extends AppCompatActivity
@@ -63,13 +55,8 @@ public class MainPage extends AppCompatActivity
         Log.d("cpen", "oncreate");
 
         //get Token passed in
-        Bundle tokenBundle = getIntent().getExtras();
-        String token = tokenBundle.getString("token");
         student_user = Student.getInstance();
-        student_user.setToken(token);
-        student_user.updateInfo(this);
-        student_user.updateCourseInfo(this);
-        student_user.updateGroupInfo(this);
+
 
         //student_user
     }
@@ -96,29 +83,8 @@ public class MainPage extends AppCompatActivity
         final TextView myUnameDisplay = (TextView) findViewById(R.id.Username);
         final TextView myEmailDisplay = (TextView) findViewById(R.id.Email);
 
-        String url = "http://206.87.135.138:8080/Servlet/main?token=" + token;
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            myUnameDisplay.setText(response.get("name").toString());
-                            myEmailDisplay.setText(response.get("email").toString());
-                        }catch (JSONException e)
-                        {myUnameDisplay.setText("Json exception");
-                         myEmailDisplay.setText("Json exception");}
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        myUnameDisplay.setText("Scott not ready");
-                        myEmailDisplay.setText("Scott not ready");
-                    }
-                });
-        // Access the RequestQueue through your singleton class.
-       SBRequestQueue.getInstance(this).addToRequestQueue(jsObjRequest);
-       // myUnameDisplay.setText(student_user.getName());
-       // myEmailDisplay.setText(student_user.getEmail());
+       myUnameDisplay.setText(student_user.getName());
+       myEmailDisplay.setText(student_user.getEmail());
         return true;
     }
 
@@ -144,12 +110,11 @@ public class MainPage extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager manager = getSupportFragmentManager();
         if (id == R.id.Profile) {
-
             MyprofileFragment profilefraement = MyprofileFragment.newInstance(student_user);
             manager.beginTransaction().replace(R.id.layout_for_fragments,profilefraement,profilefraement.getTag()).commit();
-
         } else if (id == R.id.Course) {
-           MycourseFragment coursefragment = MycourseFragment.newInstance("course","blablah");
+            MycourseFragment coursefragment = MycourseFragment.newInstance("course","blablah");
+            Utility.getInstance().updateAllAvailableCourses(this);
             manager.beginTransaction().replace(R.id.layout_for_fragments,coursefragment,coursefragment.getTag()).commit();
         } else if (id == R.id.Group) {
             MygroupFragment groupfragment = MygroupFragment.newInstance(student_user);

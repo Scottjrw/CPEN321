@@ -39,14 +39,12 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
       try{
           super.onCreate(savedInstanceState);
       }catch (Exception e){
-          Log.d("caosinimabi", "WORINIMABI");
       }
         setContentView(R.layout.activity_register_new_group);
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
         final EditText et_name = (EditText) findViewById(R.id.et_GroupName);
         //final EditText et_desc = (EditText) findViewById(R.id.et_desc);
         Button btm = (Button) findViewById(R.id.btm_RegisterGroup);
-
 
         final Switch isPrivate = (Switch) findViewById(R.id.sw_private);
         final EditText inviteCode = (EditText) findViewById(R.id.et_inviteC);
@@ -69,11 +67,6 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 }
             }
         });
-
-
-
-
-
 
 
         courseSpinner = (Spinner) findViewById(R.id.sp_courseNames);
@@ -115,17 +108,8 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                         course_id = c.getID();
                 }
 
-                /*
-                Bundle bundle = getIntent().getExtras();
-                final Student student = (Student) bundle.getSerializable("student");
-                */
                 final Student student = Student.getInstance();
 
-                /*
-                http://localhost:8080/Servlet/group?token=5256d241-4810-4650-8287-3ff16dfe12f3
-                &isPrivate=0
-                &groupName=112&inviteCode=&courseId=1&action=createGroup
-                 */
                 String staticURL = getResources().getString(R.string.deployURL) + "group?";
                 String url = staticURL + "token=" + student.getToken() + "&isPrivate=" + privateOrNot +
                              "&groupName=" + name +
