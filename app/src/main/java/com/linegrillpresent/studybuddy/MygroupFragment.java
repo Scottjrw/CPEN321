@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import exception.AttachRuntimeException;
-import system.UISystem;
 import user.Student;
 
 
@@ -31,28 +31,23 @@ public class MygroupFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private Student student;
 
-    /*
     public MygroupFragment() {
         // Required empty public constructor
     }
-*/
+
     public static MygroupFragment newInstance(Student stu) {
         MygroupFragment fragment = new MygroupFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("student", stu);
-        fragment.setArguments(args);
+       // Bundle args = new Bundle();
+       // args.putSerializable("student", stu);
+       // fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-         student = (Student) getArguments().getSerializable(
-                "student");
-        */
-        student = Student.getInstance();
-        UISystem.getInstance().getCourseNames(getActivity());
+         student = Student.getInstance();
+
     }
 
     @Override
@@ -68,9 +63,6 @@ public class MygroupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent userMainIntent = new Intent(getActivity(), RegisterNewGroup.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("student", student);
-                userMainIntent.putExtras(bundle);
                 getActivity().startActivity(userMainIntent);
             }
         });
@@ -78,12 +70,24 @@ public class MygroupFragment extends Fragment {
         overview.setText("You have registered for " + student.getNumberOfGroups() + " groups:");
 
 
-        String[] listItems = new String[student.getNumberOfGroups()];
+        final String[] listItems = new String[student.getNumberOfGroups()];
         for(int i = 0;i < student.getNumberOfGroups();i++)
             listItems[i] = student.getGroups().get(i);
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectGroupName = listItems[position];
+                Log.d("click", selectGroupName);
+                Intent showGroupInfoIntent = new Intent(getActivity(), ShowGroupInfoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("group_name", selectGroupName);
+                showGroupInfoIntent.putExtras(bundle);
+                getActivity().startActivity(showGroupInfoIntent);
+            }
+        });
         return view;
     }
 
@@ -100,7 +104,7 @@ public class MygroupFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new AttachRuntimeException(context.toString()
+            throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }

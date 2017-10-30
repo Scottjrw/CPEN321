@@ -5,27 +5,27 @@ package system;
  */
 
 public class Course {
-    private int id;
-    private int num;
-    private String name;
+    private int course_id;
+    private int course_code;
+    private String course_name;
     private  String courseFullName;
     public Course(int id, String name, int num) {
-        this.id = id;
-        this.name = name;
-        this.num = num;
+        this.course_id = id;
+        this.course_name = name;
+        this.course_code = num;
         courseFullName = name + " " + Integer.toString(num);
     }
 
     public int getID() {
-        return this.id;
+        return this.course_id;
     }
 
     public int getNum() {
-        return this.num;
+        return this.course_code;
     }
 
     public String getName() {
-        return this.name;
+        return this.course_name;
     }
 
     public String getFullName(){

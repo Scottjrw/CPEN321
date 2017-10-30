@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 String resText = response.toString();
 
-                                if("succeed".equals(resText)) {
+                                if(resText.equals("succeed") ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("Register Succeed, Plase Login")
                                             .setNegativeButton("CLOSE", null)
@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 })
                                             .create()
                                             .show();
-                                } else if("usernameExists".equals(resText)){
+                                } else if(resText.equals("usernameExists")){
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("The username has been used")
                                             .setNegativeButton("CLOSE", null)

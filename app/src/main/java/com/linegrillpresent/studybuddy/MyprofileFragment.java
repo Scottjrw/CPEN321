@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import exception.AttachRuntimeException;
 import user.Student;
 
 
@@ -38,9 +37,9 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
 
     public static MyprofileFragment newInstance(Student stu) {
         MyprofileFragment fragment = new MyprofileFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("student", stu);
-        fragment.setArguments(args);
+       // Bundle args = new Bundle();
+       // args.putSerializable("student", stu);
+       // fragment.setArguments(args);
         return fragment;
     }
 
@@ -94,7 +93,7 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new AttachRuntimeException(context.toString()
+            throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }

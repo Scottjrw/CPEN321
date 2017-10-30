@@ -168,6 +168,6 @@ public class MainPage extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        /* Do no need to add changes here.. */
+
     }
 }
