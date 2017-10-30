@@ -56,7 +56,9 @@ public class MainPage extends AppCompatActivity
 
         //get Token passed in
         student_user = Student.getInstance();
-
+        student_user.updateInfo(this);
+        student_user.updateCourseInfo(this);
+        student_user.updateGroupInfo(this);
 
         //student_user
     }

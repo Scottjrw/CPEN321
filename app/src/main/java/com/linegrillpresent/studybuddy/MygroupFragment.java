@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -68,12 +70,24 @@ public class MygroupFragment extends Fragment {
         overview.setText("You have registered for " + student.getNumberOfGroups() + " groups:");
 
 
-        String[] listItems = new String[student.getNumberOfGroups()];
+        final String[] listItems = new String[student.getNumberOfGroups()];
         for(int i = 0;i < student.getNumberOfGroups();i++)
             listItems[i] = student.getGroups().get(i);
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectGroupName = listItems[position];
+                Log.d("click", selectGroupName);
+                Intent showGroupInfoIntent = new Intent(getActivity(), ShowGroupInfoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("group_name", selectGroupName);
+                showGroupInfoIntent.putExtras(bundle);
+                getActivity().startActivity(showGroupInfoIntent);
+            }
+        });
         return view;
     }
 

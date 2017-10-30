@@ -25,6 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterNewGroup" />
         <activity android:name=".RegisterNewCourse" />
+        <activity android:name=".ShowGroupInfoActivity" />
         <activity android:name=".WaitActivity"></activity>
     </application>
 
