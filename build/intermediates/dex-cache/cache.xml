@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="16c87888b131fc37c8e43af06eca1b9f1edc5a0a">
+        <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a07d1188990f2bcd7cec1f0d0e0e2463cab10a02\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_c0537b6e1d017d59a65366184d1d90cdac9aa4fb\classes.dex" />
+    </item>
+
+</items>

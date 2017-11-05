@@ -62,6 +62,8 @@ public class Utility {
                                Log.d("helloUtilityCourse", "onResponse: "+ courseName + courseNum + courseID + availableCourses.size());
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                            } catch (InvalidCourseException e) {
+                                e.printStackTrace();
                             }
                         Log.d("UtilityCourse", "length is " + length);
                     }

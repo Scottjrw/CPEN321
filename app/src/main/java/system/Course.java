@@ -9,11 +9,13 @@ public class Course {
     private int course_code;
     private String course_name;
     private  String courseFullName;
-    public Course(int id, String name, int num) {
+
+    public Course(int id, String name, int code) throws InvalidCourseException {
+        if(id < 0 || name == null || code <0 || name.isEmpty()){ throw new InvalidCourseException();}
         this.course_id = id;
         this.course_name = name;
-        this.course_code = num;
-        courseFullName = name + " " + Integer.toString(num);
+        this.course_code = code;
+        courseFullName = name + " " + Integer.toString(code);
     }
 
     public int getID() {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import user.InvalidUserException;
 import user.Student;
 
 public class WaitActivity extends AppCompatActivity {
@@ -15,7 +16,11 @@ public class WaitActivity extends AppCompatActivity {
         Bundle tokenBundle = getIntent().getExtras();
         String token = tokenBundle.getString("token");
         Student user = Student.getInstance();
-        user.setToken(token);
+        try {
+            user.setToken(token);
+        } catch (InvalidUserException e) {
+            e.printStackTrace();
+        }
         user.updateInfo(this);
         user.updateCourseInfo(this);
         user.updateGroupInfo(this);
