@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -88,12 +89,24 @@ public class MycourseFragment extends Fragment {
 
         overview.setText("You have registered for " + student.getNumberOfCourses() + " courses:");
         Log.d("onclickcourse", "onCreateView: " + student.getNumberOfCourses());
-        String[] listItems = new String [student.getNumberOfCourses()];
+        final String[] listItems = new String [student.getNumberOfCourses()];
         for(int i = 0;i < student.getNumberOfCourses();i++)
             listItems[i] = student.getCourses().get(i).getFullName();
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectCourseName = listItems[position];
+                Log.d("click", selectCourseName);
+                Intent showGroupInfoIntent = new Intent(getActivity(), ShowGroupInfoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("group_name", selectCourseName);
+                showGroupInfoIntent.putExtras(bundle);
+                getActivity().startActivity(showGroupInfoIntent);
+            }
+        });
         return view;
     }
 

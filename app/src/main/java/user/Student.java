@@ -52,7 +52,34 @@ public class Student implements User {
             instance = new Student();
         return instance;
     }
+    public  void updateGroupsUnderCourse(Activity this_act, final Course course){
+        String staticURL = this_act.getResources().getString(R.string.deployURL) + "Course?";
+        String url = staticURL + "token=" + token +"&courseId="+ course.getID() + "&action=listGroupsUnderCourse";
+        final Activity activity = this_act;
 
+        final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        //receive the student'info
+                        int length = response.length();
+                        for(int i = 0; i < length;i++)
+                            try {
+                                course.addGroups(response.getString(i));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        Log.d("hello", "length is " + length);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // fail to receive the student'info based on the token
+                    }
+                });
+        SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
+    }
     public void  updateGroupInfo(Activity this_act) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "group?";
         String url = staticURL + "token=" + token + "&action=listGroup";
@@ -72,7 +99,6 @@ public class Student implements User {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                        Log.d("hello", "length is " + length);
                     }
                 }, new Response.ErrorListener() {
 

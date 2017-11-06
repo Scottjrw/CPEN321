@@ -53,13 +53,9 @@ public class Utility {
                         for(int i = 0; i < length;i++)
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                String courseName = object.getString("courseName");
-                                int courseNum = object.getInt("courseNum");
-                                int courseID = object.getInt("id");
-                                Course course = new Course(courseID, courseName, courseNum);
+                                Course course = new Course( object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"));
                                 if(!availableCourses.contains(course))
                                     availableCourses.add(course);
-                               Log.d("helloUtilityCourse", "onResponse: "+ courseName + courseNum + courseID + availableCourses.size());
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } catch (InvalidCourseException e) {

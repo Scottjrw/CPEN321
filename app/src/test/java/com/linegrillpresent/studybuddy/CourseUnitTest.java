@@ -32,8 +32,8 @@ public class CourseUnitTest {
     @Test
     public  void course_equal() throws InvalidCourseException {
         Course a = new Course(2,"CPEN",321);
-        Course b = new Course(2,"CPEN",321);
-        Assert.assertTrue(a.equals(b));
+        Course b = new Course(3,"CPEN ",321);
+        Assert.assertFalse(a.equals(b));
     }
 
 }

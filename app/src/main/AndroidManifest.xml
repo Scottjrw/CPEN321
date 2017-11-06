@@ -25,9 +25,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterNewGroup" />
         <activity android:name=".RegisterNewCourse" />
-        <activity android:name=".ShowGroupInfoActivity"
+        <activity
+            android:name=".ShowGroupInfoActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".WaitActivity"></activity>
+        <activity android:name=".WaitActivity" />
+        <activity android:name=".ShowClassInfoActivity"></activity>
     </application>
 
 </manifest>
