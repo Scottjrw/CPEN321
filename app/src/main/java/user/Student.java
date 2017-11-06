@@ -46,7 +46,6 @@ public class Student implements User {
         courses = new ArrayList<Course>();
     }
 
-
     public static Student getInstance() {
         if(instance == null)
             instance = new Student();

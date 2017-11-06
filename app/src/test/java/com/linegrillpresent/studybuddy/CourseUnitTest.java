@@ -35,5 +35,12 @@ public class CourseUnitTest {
         Course b = new Course(3,"CPEN ",321);
         Assert.assertFalse(a.equals(b));
     }
+    @Test
+    public  void course_field()throws  InvalidCourseException{
+        Course a = new Course(2,"CPEN",321);
+        Assert.assertEquals(2,a.getID());
+        Assert.assertEquals("CPEN",a.getName());
+        Assert.assertEquals(321,a.getCode());
+    }
 
 }

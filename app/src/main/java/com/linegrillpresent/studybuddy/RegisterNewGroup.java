@@ -104,7 +104,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 int course_id = -1;
                 for(int i = 0;i < course.size();i++) {
                     Course c = course.get(i);
-                    if(c.getName().equals(course_name) && c.getNum() == course_num)
+                    if(c.getName().equals(course_name) && c.getCode() == course_num)
                         course_id = c.getID();
                 }
 
@@ -172,7 +172,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         List<String> numbers = new ArrayList<>();
         for(int i = 0;i < courseNames.size();i++)
             if(course.get(i).getName().equals(courseName))
-                numbers.add(Integer.toString(course.get(i).getNum()));
+                numbers.add(Integer.toString(course.get(i).getCode()));
 
         Log.d("newgroup", Integer.toString(numbers.size()));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,

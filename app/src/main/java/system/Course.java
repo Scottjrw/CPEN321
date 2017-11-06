@@ -25,7 +25,7 @@ public class Course {
         return this.course_id;
     }
 
-    public int getNum() {
+    public int getCode() {
         return this.course_code;
     }
 

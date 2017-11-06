@@ -71,7 +71,7 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
 
                 for(int i = 0;i < availableCourses.size();i++) {
                     tobeRegisterd = availableCourses.get(i);
-                    if (tobeRegisterd.getName().equals(course_name) && tobeRegisterd.getNum() == course_code) {
+                    if (tobeRegisterd.getName().equals(course_name) && tobeRegisterd.getCode() == course_code) {
                         course_id = tobeRegisterd.getID();
                         if(student.getCourses().contains(tobeRegisterd)){
                             Toast.makeText(RegisterNewCourse.this,"You are registered this course already",Toast.LENGTH_SHORT).show();
@@ -135,7 +135,7 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
         List<String> numbers = new ArrayList<>();
         for(int i = 0;i < availableCourses.size();i++)
             if(availableCourses.get(i).getName().equals(courseName))
-                numbers.add(Integer.toString(availableCourses.get(i).getNum()));
+                numbers.add(Integer.toString(availableCourses.get(i).getCode()));
         Log.d("newgroup", Integer.toString(numbers.size()));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
