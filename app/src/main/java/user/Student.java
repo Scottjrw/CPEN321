@@ -52,7 +52,7 @@ public class Student implements User {
         return instance;
     }
     public  void updateGroupsUnderCourse(Activity this_act, final Course course){
-        String staticURL = this_act.getResources().getString(R.string.deployURL) + "Course?";
+        String staticURL = this_act.getResources().getString(R.string.deployURL) + "course?";
         String url = staticURL + "token=" + token +"&courseId="+ course.getID() + "&action=listGroupsUnderCourse";
         final Activity activity = this_act;
 
@@ -65,6 +65,7 @@ public class Student implements User {
                         for(int i = 0; i < length;i++)
                             try {
                                 course.addGroups(response.getString(i));
+                                Log.d("addG", "onResponse:" + response.getString(i));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

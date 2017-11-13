@@ -20,6 +20,15 @@
         <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\pre-dexed\androidTest\debug\junit-4.12_8ffd11126fc36da360aeaa053a17870fe1058d54.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_c0537b6e1d017d59a65366184d1d90cdac9aa4fb\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\REX\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-integration\1.3\5de0c73fef18917cd85d0ab70bb23818685e4dfd\hamcrest-integration-1.3.jar"
         jumboMode="false"
@@ -108,6 +117,15 @@
         revision="26.0.1"
         sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
         <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\pre-dexed\androidTest\debug\javawriter-2.1.1_e13e346bcb9e6201dddf3caa3f76a21a5c1274a2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3def034f7ed753ea034e9aac1d46090aa57396de">
+        <dex dex="C:\Users\REX\AndroidStudioProjects\StudyBuddy4 realease\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a07d1188990f2bcd7cec1f0d0e0e2463cab10a02\classes.dex" />
     </item>
     <item
         is-multidex="false"

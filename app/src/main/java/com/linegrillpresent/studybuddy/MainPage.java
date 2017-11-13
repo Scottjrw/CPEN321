@@ -17,6 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import system.Course;
 import system.Utility;
 import user.Student;
 
@@ -115,6 +118,10 @@ public class MainPage extends AppCompatActivity
             MyprofileFragment profilefraement = MyprofileFragment.newInstance(student_user);
             manager.beginTransaction().replace(R.id.layout_for_fragments,profilefraement,profilefraement.getTag()).commit();
         } else if (id == R.id.Course) {
+            ArrayList<Course> temp = (ArrayList<Course>) student_user.getCourses();
+            for(int i = 0; i < temp.size();i++){
+                student_user.updateGroupsUnderCourse(this,temp.get(i));
+            }
             MycourseFragment coursefragment = MycourseFragment.newInstance("course","blablah");
             Utility.getInstance().updateAllAvailableCourses(this);
             manager.beginTransaction().replace(R.id.layout_for_fragments,coursefragment,coursefragment.getTag()).commit();

@@ -100,7 +100,7 @@ public class MycourseFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectCourseName = listItems[position];
                 Log.d("click", selectCourseName);
-                Intent showGroupInfoIntent = new Intent(getActivity(), ShowGroupInfoActivity.class);
+                Intent showGroupInfoIntent = new Intent(getActivity(), ShowClassInfoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("group_name", selectCourseName);
                 showGroupInfoIntent.putExtras(bundle);

@@ -1,5 +1,6 @@
 package system;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public class Course {
         this.course_id = id;
         this.course_name = name;
         this.course_code = code;
+        groups = new ArrayList<String>();
         courseFullName = name + " " + Integer.toString(code);
     }
 
