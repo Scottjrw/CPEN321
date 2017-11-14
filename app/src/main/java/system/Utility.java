@@ -53,7 +53,7 @@ public class Utility {
                         for(int i = 0; i < length;i++)
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                Course course = new Course( object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"));
+                                Course course = new Course( object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"), object.getString("description"));
                                 if(!availableCourses.contains(course))
                                     availableCourses.add(course);
                             } catch (JSONException e) {

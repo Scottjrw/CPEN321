@@ -13,12 +13,14 @@ public class Course {
     private String course_name;
     private  String courseFullName;
     private List<String> groups;
+    private String course_desc;
 
-    public Course(int id, String name, int code) throws InvalidCourseException {
+    public Course(int id, String name, int code, String desc) throws InvalidCourseException {
         if(id < 0 || name == null || code <0 || name.isEmpty()){ throw new InvalidCourseException();}
         this.course_id = id;
         this.course_name = name;
         this.course_code = code;
+        this.course_desc = desc;
         groups = new ArrayList<String>();
         courseFullName = name + " " + Integer.toString(code);
     }
@@ -36,8 +38,10 @@ public class Course {
     }
 
     public String getFullName(){
-        return  courseFullName;
+        return this.courseFullName;
     }
+
+    public String getDesc() {return course_desc;}
 
     public void addGroups(String group){
         groups.add(group);

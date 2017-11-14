@@ -102,7 +102,7 @@ public class MycourseFragment extends Fragment {
                 Log.d("click", selectCourseName);
                 Intent showGroupInfoIntent = new Intent(getActivity(), ShowClassInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("group_name", selectCourseName);
+                bundle.putString("course_name", selectCourseName);
                 showGroupInfoIntent.putExtras(bundle);
                 getActivity().startActivity(showGroupInfoIntent);
             }

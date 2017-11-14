@@ -129,7 +129,7 @@ public class Student implements User {
                         for(int i = 0; i < length;i++)
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                Course course = new Course(object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"));
+                                Course course = new Course(object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"), object.getString("description"));
                                 if(!courses.contains(course))
                                     courses.add(course);
                             } catch (JSONException e) {
@@ -255,5 +255,26 @@ public class Student implements User {
     @Override
     public List<Course> getCourses() {return courses;}
 
+    public Course getCourseObj(String course_name) {
+        for(int i = 0;i < courses.size();i++)
+            if(courses.get(i).getFullName().equals(course_name))
+                return courses.get(i);
+        return null;
+    }
 
+    public boolean joinCourseOrNot(String course_name) {
+        /*
+        if(courses == null)
+            updateCourseInfo(this_act);
+        */
+        Log.d("courseTest", "***COURSENAME IS " + course_name);
+        /*
+        for(int i = 0;i < courses.size();i++) {
+            Log.d("courseTest", "course" + i + "=" + courses.get(i).getFullName() + "\n");
+            if (groups.get(i).get.equals(course_name))
+                return true;
+        }*/
+        return groups.contains(course_name);
+        //return false;
+    }
 }
