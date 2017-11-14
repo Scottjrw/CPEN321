@@ -12,14 +12,14 @@ import android.widget.Button;
 
 import user.Student;
 
-public class MainPage extends AppCompatActivity{
+public class WelcomePage extends AppCompatActivity {
     private String token;
     private Student student_user;
     private Context ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.activity_welcome_page);
 
         ctx = this;
 
@@ -58,10 +58,6 @@ public class MainPage extends AppCompatActivity{
             }
         });
 
-
-
-
-
         Log.d("cpen", "oncreate");
 
         //get Token passed in
@@ -72,5 +68,4 @@ public class MainPage extends AppCompatActivity{
 
         //student_user
     }
-
 }

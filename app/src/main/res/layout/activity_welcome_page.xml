@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.linegrillpresent.studybuddy.MainPage">
-
+    tools:context="com.linegrillpresent.studybuddy.WelcomePage">
     <Button
         android:id="@+id/myprofile"
         android:layout_width="115dp"
@@ -67,6 +66,4 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
-
-
 </android.support.constraint.ConstraintLayout>

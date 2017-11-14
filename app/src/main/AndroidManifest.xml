@@ -32,7 +32,8 @@
         <activity android:name=".ShowClassInfoActivity" />
         <activity android:name=".MycourseActivity" />
         <activity android:name=".MygroupActivity" />
-        <activity android:name=".MyprofileActivity"></activity>
+        <activity android:name=".MyprofileActivity" />
+        <activity android:name=".WelcomePage"></activity>
     </application>
 
 </manifest>

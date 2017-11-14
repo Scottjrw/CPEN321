@@ -32,7 +32,7 @@ public class WaitActivity extends AppCompatActivity {
                 try
                 {
                     Thread.sleep(1000);
-                    Intent i = new Intent(getApplicationContext(), MainPage.class);
+                    Intent i = new Intent(getApplicationContext(), WelcomePage.class);
                     startActivity(i);
                 }
                 catch (InterruptedException e)
