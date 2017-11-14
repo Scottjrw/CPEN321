@@ -31,7 +31,7 @@ public class WaitActivity extends AppCompatActivity {
             {
                 try
                 {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     Intent i = new Intent(getApplicationContext(), MainPage.class);
                     startActivity(i);
                 }

@@ -1,5 +1,7 @@
 package com.linegrillpresent.studybuddy;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,14 +31,41 @@ public class MainPage extends AppCompatActivity
         ,MygroupFragment.OnFragmentInteractionListener{
     private String token;
     private Student student_user;
+    private Context ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ctx = this;
 
+        Button btn1 = (Button) findViewById(R.id.myprofile);
+        Button btn2 = (Button) findViewById(R.id.mycourses);
+        Button btn3 = (Button) findViewById(R.id.mygroups);
+        Button btn4 = (Button) findViewById(R.id.button4);
 
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userMainIntent = new Intent(ctx, MyprofileActivity.class);
+                ctx.startActivity(userMainIntent);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userMainIntent = new Intent(ctx, MycourseActivity.class);
+                ctx.startActivity(userMainIntent);
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userMainIntent = new Intent(ctx, MygroupActivity.class);
+                ctx.startActivity(userMainIntent);
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
