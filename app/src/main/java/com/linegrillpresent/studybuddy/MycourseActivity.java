@@ -49,7 +49,7 @@ public class MycourseActivity extends AppCompatActivity {
                 Log.d("click", selectCourseName);
                 Intent showGroupInfoIntent = new Intent(ctx, ShowClassInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("group_name", selectCourseName);
+                bundle.putString("course_name", selectCourseName);
                 showGroupInfoIntent.putExtras(bundle);
                 ctx.startActivity(showGroupInfoIntent);
             }
