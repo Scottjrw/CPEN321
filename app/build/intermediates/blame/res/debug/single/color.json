@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/design_error.xml",
+        "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/color/design_error.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/f87b49acc60cb07c54875ac899d32e64d8fc8641/output/res/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/miketang/.android/build-cache/f87b49acc60cb07c54875ac899d32e64d8fc8641/output/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/miketang/.android/build-cache/f87b49acc60cb07c54875ac899d32e64d8fc8641/output/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/color/abc_primary_text_material_dark.xml"
+    }
+]

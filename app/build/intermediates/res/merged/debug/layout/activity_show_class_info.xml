@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.linegrillpresent.studybuddy.ShowClassInfoActivity">
+
+    <LinearLayout
+        android:id="@+id/All"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:id="@+id/Title_desc"
+            android:layout_width="match_parent"
+            android:layout_height="161dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/coursename_layout"
+                android:layout_width="match_parent"
+                android:layout_height="49dp">
+
+                <TextView
+                    android:id="@+id/tv_coursename"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="TextView"
+                    android:textSize="30sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/coursedescription_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_coursedesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/List_Layout"
+                android:layout_width="192dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/list_groups"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Buttons_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/All_btn_layout"
+                    android:layout_width="204dp"
+                    android:layout_height="62dp">
+
+                    <Button
+                        android:id="@+id/Allgroup_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="All Groups" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/My_btn_layout"
+                    android:layout_width="188dp"
+                    android:layout_height="82dp">
+
+                    <Button
+                        android:id="@+id/Mygroup_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="My groups" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/Not_btn_layout"
+                    android:layout_width="188dp"
+                    android:layout_height="86dp">
+
+                    <Button
+                        android:id="@+id/Othergroup_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="other groups" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/Private_btn_layout"
+                    android:layout_width="188dp"
+                    android:layout_height="56dp">
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Join Private Group" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/Newgroup_btn_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Create New Group" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

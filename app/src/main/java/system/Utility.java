@@ -74,6 +74,7 @@ public class Utility {
     }
 
     public List<Course> getAllAvailableCourses(){
+
         return availableCourses;
     }
 

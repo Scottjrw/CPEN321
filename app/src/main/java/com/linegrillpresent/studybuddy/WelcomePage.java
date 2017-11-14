@@ -3,13 +3,12 @@ package com.linegrillpresent.studybuddy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import system.Utility;
 import user.Student;
 
 public class WelcomePage extends AppCompatActivity {
@@ -49,6 +48,7 @@ public class WelcomePage extends AppCompatActivity {
                 ctx.startActivity(userMainIntent);
             }
         });
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class WelcomePage extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+*/
         Log.d("cpen", "oncreate");
 
         //get Token passed in
@@ -65,7 +65,7 @@ public class WelcomePage extends AppCompatActivity {
         student_user.updateInfo(this);
         student_user.updateCourseInfo(this);
         student_user.updateGroupInfo(this);
-
+        Utility.getInstance().updateAllAvailableCourses(this);
         //student_user
     }
 }

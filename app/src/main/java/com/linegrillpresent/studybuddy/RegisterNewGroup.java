@@ -72,6 +72,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         courseSpinner = (Spinner) findViewById(R.id.sp_courseNames);
         numSpinner = (Spinner) findViewById(R.id.sp_num);
         course = (ArrayList<Course>) Student.getInstance().getCourses();
+        Log.d("newgroup", "student has " + course.size() + "courses");
         courseNames = new ArrayList<String>();
 
         for(int i = 0; i < course.size();i++) {
@@ -170,7 +171,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String courseName = courseNames.get(position).trim();
         List<String> numbers = new ArrayList<>();
-        for(int i = 0;i < courseNames.size();i++)
+        for(int i = 0;i < course.size();i++)
             if(course.get(i).getName().equals(courseName))
                 numbers.add(Integer.toString(course.get(i).getCode()));
 
