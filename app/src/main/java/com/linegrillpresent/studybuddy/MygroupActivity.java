@@ -27,6 +27,7 @@ public class MygroupActivity extends AppCompatActivity {
         TextView overview = (TextView) findViewById(R.id.tv_overview);
         Button btm = (Button) findViewById(R.id.btm_rng);
 
+
         btm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +35,7 @@ public class MygroupActivity extends AppCompatActivity {
                 ctx.startActivity(userMainIntent);
             }
         });
+
 
         overview.setText("You have registered for " + student.getNumberOfGroups() + " groups:");
 
@@ -57,4 +59,7 @@ public class MygroupActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

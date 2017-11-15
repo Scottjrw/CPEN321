@@ -112,10 +112,6 @@
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/nav_header_main_page.xml"
     },
     {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/content_main_page.xml",
-        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/content_main_page.xml"
-    },
-    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/notification_template_part_chronometer.xml"
     },
@@ -150,10 +146,6 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
         "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/layout/design_bottom_sheet_dialog.xml"
-    },
-    {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/app_bar_main_page.xml",
-        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/app_bar_main_page.xml"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
@@ -218,10 +210,6 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/abc_alert_dialog_button_bar_material.xml"
-    },
-    {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/activity_main_page.xml",
-        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/activity_main_page.xml"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/fragment_mygroup.xml",

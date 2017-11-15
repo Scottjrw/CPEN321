@@ -85,6 +85,8 @@ public class Student implements User {
         String url = staticURL + "token=" + token + "&action=listGroup";
         final Activity activity = this_act;
 
+       // groups = new ArrayList<String>();
+
         JsonArrayRequest  jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
@@ -276,5 +278,20 @@ public class Student implements User {
         }*/
         return groups.contains(course_name);
         //return false;
+    }
+
+    public void leaveGroup(String group_name) {
+        if(groups.contains(group_name))
+            groups.remove(group_name);
+        else
+            Log.d("ShowGroup", "FATAL ERROR");
+    }
+
+    public void leaveCourse(String course_name) {
+       Course courseObj =  getCourseObj(course_name);
+        if(courses.contains(courseObj))
+            courses.remove(courseObj);
+        else
+            Log.d("ShowClass", "FATAL ERROR");
     }
 }

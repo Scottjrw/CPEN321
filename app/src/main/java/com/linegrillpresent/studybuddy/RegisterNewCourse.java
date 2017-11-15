@@ -106,11 +106,11 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
                                             .setPositiveButton("Back",  new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     //do things
-                                                    Intent mainpageIntent = new Intent(RegisterNewCourse.this, MainPage.class);
+                                                    Intent WelcomePageIntent = new Intent(RegisterNewCourse.this, WelcomePage.class);
                                                     Bundle bundle = new Bundle();
                                                     bundle.putString("token", student.getToken());
-                                                    mainpageIntent.putExtras(bundle);
-                                                    RegisterNewCourse.this.startActivity(mainpageIntent);
+                                                    WelcomePageIntent.putExtras(bundle);
+                                                    RegisterNewCourse.this.startActivity(WelcomePageIntent);
                                                 }
                                             })
                                             .create()

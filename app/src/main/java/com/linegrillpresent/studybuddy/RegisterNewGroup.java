@@ -141,11 +141,11 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                                             .setPositiveButton("Back",  new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     //do things
-                                                    Intent mainpageIntent = new Intent(RegisterNewGroup.this, MainPage.class);
+                                                    Intent WelcomePageIntent = new Intent(RegisterNewGroup.this, WelcomePage.class);
                                                     Bundle bundle = new Bundle();
                                                     bundle.putString("token", student.getToken());
-                                                    mainpageIntent.putExtras(bundle);
-                                                    RegisterNewGroup.this.startActivity(mainpageIntent);
+                                                    WelcomePageIntent.putExtras(bundle);
+                                                    RegisterNewGroup.this.startActivity(WelcomePageIntent);
                                                 }
                                             })
                                             .create()

@@ -29,10 +29,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.linegrillpresent.studybuddy.RegisterActivity" />
-        <activity
-            android:name="com.linegrillpresent.studybuddy.MainPage"
-            android:label="StudyBuddy"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.linegrillpresent.studybuddy.RegisterNewGroup" />
         <activity android:name="com.linegrillpresent.studybuddy.RegisterNewCourse" />
         <activity

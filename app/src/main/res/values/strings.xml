@@ -10,5 +10,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="android_studio">Android Studio</string>
     <string name="android_studio_android_com">android.studio@android.com</string>
-    <string name="deployURL">http://206.87.134.113:8080/Servlet/</string>>
+    <string name="deployURL">http://206.87.134.168:8080/Servlet/</string>>
 </resources>

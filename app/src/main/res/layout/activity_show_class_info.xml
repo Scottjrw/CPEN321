@@ -115,10 +115,11 @@
                     android:layout_height="56dp">
 
                     <Button
-                        android:id="@+id/button5"
+                        android:id="@+id/btn_createnewgroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Join Private Group" />
+                        android:text="Create New Group" />
+
                 </FrameLayout>
 
                 <FrameLayout
@@ -127,10 +128,10 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/button6"
+                        android:id="@+id/btn_dropcourse"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Create New Group" />
+                        android:text="Drop Course" />
                 </FrameLayout>
 
             </LinearLayout>

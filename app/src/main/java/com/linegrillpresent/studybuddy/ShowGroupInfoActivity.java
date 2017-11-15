@@ -1,6 +1,7 @@
 package com.linegrillpresent.studybuddy;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,8 @@ import java.util.List;
 import SBRequestManager.SBRequestQueue;
 import user.Student;
 
+import static com.linegrillpresent.studybuddy.R.id.btn_leave;
+
 public class ShowGroupInfoActivity extends AppCompatActivity {
 
     private String group_name;
@@ -41,7 +44,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
     private Button   editAnnounceButton;
     private EditText postEditText;
     private TextView announcementTextView;
-
+    private Button leaveButton;
     private Student student;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +61,18 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         postEditText = (EditText) findViewById(R.id.et_typeinfield);
         announcementTextView = (TextView) findViewById(R.id.tv_anounceText);
         editAnnounceButton = (Button) findViewById(R.id.btn_editannounce);
+        leaveButton = (Button) findViewById(btn_leave);
         //---------------------
 
         student = Student.getInstance();
         requestGroupInfo();
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
-
+        leaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leaveMessage();
+            }
+        });
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +168,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         String token = student.getToken();
         String staticURL = getResources().getString(R.string.deployURL) + "group?action=updateAnnouncement&";
         String url =  staticURL + "token=" + token + "&groupName=" + group_name + "&post=" + newAnnouncement;
+        Log.d("ShowGroup", url) ;
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -297,5 +307,60 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         }
     */
         disBoardList.setAdapter(adapter);
+    }
+
+    private void leaveMessage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
+        builder.setMessage("ARE YOU SURE")
+                .setMessage("Are you sure you want to leave this group? you may join this group later if you like")
+                .setNegativeButton("I change my Mind", null)
+                .setPositiveButton("Yeah I want to leave",  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        leaveTheGroup();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    private void leaveTheGroup() {
+        String staticURL = this.getResources().getString(R.string.deployURL) + "group?";
+        String url = staticURL + "token=" + student.getToken() + "&groupName=" + group_name + "&action=leaveGroup";
+        Log.d("ShowGroup", url);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String resText = response;
+                        //test.setText("Response is: "+ resText);
+                        if(resText.equals("failed") ) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
+                            builder.setMessage("FAILED")
+                                    .setNegativeButton("RETRY", null)
+                                    .create()
+                                    .show();
+                        } else {
+                                    /* success
+                                     */
+                            student.leaveGroup(group_name);
+                            Intent userMainIntent = new Intent(ShowGroupInfoActivity.this, WelcomePage.class);
+                            ShowGroupInfoActivity.this.startActivity(userMainIntent);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // access the server fail
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
+                builder.setMessage("ACCESS SERVER FAILED")
+                        .setNegativeButton("RETRY LATER", null)
+                        .create()
+                        .show();
+            }
+        });
+        // Add the request to the RequestQueue
+        SBRequestQueue.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

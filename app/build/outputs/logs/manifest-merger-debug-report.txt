@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:2:1-39:12
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:3:5-46
 		INJECTED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/
 	android:name
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:7:5-37:19
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:7:5-33:19
 MERGED from [com.android.volley:volley:1.0.0] /Users/miketang/.android/build-cache/5bfc788f9cfc9cb62f210c8c66a17910708dbd9e/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] /Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/AndroidManifest.xml:29:5-20
@@ -62,52 +62,44 @@ activity#com.linegrillpresent.studybuddy.RegisterActivity
 ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:21:9-54
 	android:name
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:21:19-51
-activity#com.linegrillpresent.studybuddy.MainPage
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:22:9-25:59
-	android:label
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:24:13-39
-	android:theme
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:25:13-56
-	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:23:13-37
 activity#com.linegrillpresent.studybuddy.RegisterNewGroup
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:26:9-54
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:22:9-54
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:26:19-51
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:22:19-51
 activity#com.linegrillpresent.studybuddy.RegisterNewCourse
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:27:9-55
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:23:9-55
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:27:19-52
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:23:19-52
 activity#com.linegrillpresent.studybuddy.ShowGroupInfoActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:28:9-30:57
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:24:9-26:57
 	android:windowSoftInputMode
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:30:13-54
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:26:13-54
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:29:13-50
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:25:13-50
 activity#com.linegrillpresent.studybuddy.WaitActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:31:9-50
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:27:9-50
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:31:19-47
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:27:19-47
 activity#com.linegrillpresent.studybuddy.ShowClassInfoActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:9-59
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:28:9-59
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:19-56
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:28:19-56
 activity#com.linegrillpresent.studybuddy.MycourseActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:33:9-54
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:29:9-54
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:33:19-51
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:29:19-51
 activity#com.linegrillpresent.studybuddy.MygroupActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:34:9-53
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:30:9-53
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:34:19-50
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:30:19-50
 activity#com.linegrillpresent.studybuddy.MyprofileActivity
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:35:9-55
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:31:9-55
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:35:19-52
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:31:19-52
 activity#com.linegrillpresent.studybuddy.WelcomePage
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:36:9-58
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:9-58
 	android:name
-		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:36:19-46
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:19-46
 uses-sdk
 INJECTED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.volley:volley:1.0.0] /Users/miketang/.android/build-cache/5bfc788f9cfc9cb62f210c8c66a17910708dbd9e/output/AndroidManifest.xml:7:5-43
