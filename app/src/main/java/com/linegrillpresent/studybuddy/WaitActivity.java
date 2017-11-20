@@ -34,6 +34,7 @@ public class WaitActivity extends AppCompatActivity {
                     Thread.sleep(1000);
                     Intent i = new Intent(getApplicationContext(), WelcomePage.class);
                     startActivity(i);
+                    finish();
                 }
                 catch (InterruptedException e)
                 {

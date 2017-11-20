@@ -1,8 +1,10 @@
 package com.linegrillpresent.studybuddy;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +28,7 @@ public class WelcomePage extends AppCompatActivity {
         Button btn2 = (Button) findViewById(R.id.mycourses);
         Button btn3 = (Button) findViewById(R.id.mygroups);
         Button btn4 = (Button) findViewById(R.id.button4);
+        Button logoutbtn = (Button) findViewById(R.id.btn_logout);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,17 +51,15 @@ public class WelcomePage extends AppCompatActivity {
                 ctx.startActivity(userMainIntent);
             }
         });
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        Log.d("cpen", "oncreate");
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                logoutAction();
             }
         });
-*/
-        Log.d("cpen", "oncreate");
 
         //get Token passed in
         student_user = Student.getInstance();
@@ -67,5 +68,26 @@ public class WelcomePage extends AppCompatActivity {
         student_user.updateGroupInfo(this);
         Utility.getInstance().updateAllAvailableCourses(this);
         //student_user
+    }
+
+    private void logoutAction() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(WelcomePage.this);
+        builder.setMessage("Log Out")
+                .setMessage("Are you sure you want to Log out now?")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Yeah",  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cleanCache();
+                        Intent LoginIntent = new Intent(WelcomePage.this, LoginActivity.class);
+                        WelcomePage.this.startActivity(LoginIntent);
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    private void cleanCache() {
+        Student.getInstance().destroy();
     }
 }

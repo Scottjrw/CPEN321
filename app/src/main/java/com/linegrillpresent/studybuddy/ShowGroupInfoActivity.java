@@ -99,16 +99,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                                 } else {
                                     refreshPage();
                                     postEditText.setText("");
-                                    /*
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
-                                    builder.setMessage("POST SUCCESS")
-                                            .setNegativeButton("YEAH", null)
-                                            .create()
-                                            .show();
-                                            */
-                                    /* success POST
-                                       Save the token in a Bundle object and pass it to the userMainActivity
-                                     */
+
 
                                 }
                             }
@@ -151,6 +142,8 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String m_Text = input.getText().toString();
                 Log.d("group", m_Text);
+                if(m_Text.equals("null"))
+                    m_Text = "The Announcement Has Not Set Yet!";
                 announcementTextView.setText(m_Text);
                 sendChangeAnnouncementRequest(m_Text);
             }
@@ -232,6 +225,8 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
 
                         try {
                             String announcement = response.getString(1);
+                            if(announcement.equals("null"))
+                                announcement = "The announcement Has not Set Yet!";
                             announcementTextView.setText(announcement);
 
                         } catch (JSONException e) {

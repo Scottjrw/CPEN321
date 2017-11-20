@@ -16,12 +16,12 @@
         "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/layout/design_layout_snackbar.xml"
     },
     {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
@@ -68,12 +68,12 @@
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/two_line_list_view.xml"
     },
     {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/activity_mycourse.xml",
-        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/activity_mycourse.xml"
-    },
-    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/fragment_myprofile.xml",
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/fragment_myprofile.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/activity_mycourse.xml",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/activity_mycourse.xml"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/activity_register_new_group.xml",

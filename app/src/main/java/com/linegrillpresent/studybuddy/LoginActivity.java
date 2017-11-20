@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                     bundle.putString("token", resText);
                                     userMainIntent.putExtras(bundle);
                                     LoginActivity.this.startActivity(userMainIntent);
+                                    finish();
                                 }
                             }
                         }, new Response.ErrorListener() {

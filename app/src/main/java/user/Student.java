@@ -168,6 +168,7 @@ public class Student implements User {
                             setNumberOfGroups( response.getInt("numOfGroups"));
                             isSet = true;
                         } catch (JSONException e) {
+                            Log.d("Student", "CANNOT UPDATE INFO");
                             name = null;
                             email = null;
                             username = "not set";
@@ -293,5 +294,19 @@ public class Student implements User {
             courses.remove(courseObj);
         else
             Log.d("ShowClass", "FATAL ERROR");
+    }
+
+    public void destroy() {
+        token = null;
+        name = null;
+        email = null;
+        username = null;
+        numberOfCourses = 0;
+        numberOfGroups = 0;
+        groups = null;
+        courses = null;
+        motto = null;
+        isSet = false;
+        instance = null;
     }
 }

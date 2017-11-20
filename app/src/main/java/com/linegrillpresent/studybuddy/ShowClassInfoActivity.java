@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -71,6 +72,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         courseObj = student.getCourseObj(course_name);
         tv_course_name.setText(course_name);
         tv_course_desc.setText(courseObj.getDesc());
+        tv_course_desc.setMovementMethod(new ScrollingMovementMethod());
 
         myGroup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +137,9 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         ctx.startActivity(showGroupInfoIntent);
     }
     private void joinNewGroup(final String selectGroupName) {
+        if(selectGroupName.equals("No Group Under This Course Yet!"))
+            return;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Join Group");
 

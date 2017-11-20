@@ -13,5 +13,9 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="blueBtnStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/goodBlue</item>
+        <item name="android:textColor">@color/goodWhite</item>
 
+    </style>
 </resources>
