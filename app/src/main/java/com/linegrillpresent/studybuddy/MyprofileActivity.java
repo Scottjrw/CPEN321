@@ -12,6 +12,7 @@ public class MyprofileActivity extends AppCompatActivity {
     private String name;
     private String email;
     private int numGroups;
+    private int numCourses;
 
     private MyprofileFragment.OnFragmentInteractionListener mListener;
 
@@ -24,16 +25,19 @@ public class MyprofileActivity extends AppCompatActivity {
         username = student.getUsername();
         email = student.getEmail();
         numGroups = student.getNumberOfGroups();
+        numCourses = student.getNumberOfCourses();
         Button r = (Button) findViewById(R.id.btn_refreshProfile);
 
         TextView tvName = (TextView) findViewById(R.id.tv_name);
         TextView tvUsername = (TextView) findViewById(R.id.tv_username);
         TextView tvEmail = (TextView) findViewById(R.id.tv_email);
         TextView tvnumGroups = (TextView) findViewById(R.id.tvnumGroup);
+        TextView tvnumCourses = (TextView) findViewById(R.id.tv_num_courses);
 
         tvName.setText("Hello " + name + ",");
         tvUsername.setText("Your username is: " + username);
         tvEmail.setText("Your email is: " + email);
         tvnumGroups.setText("You are currently in " + numGroups + " groups!");
+        tvnumCourses.setText("You are currently in " + numCourses + " courses!");
     }
 }
