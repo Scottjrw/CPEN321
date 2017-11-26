@@ -33,7 +33,7 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
     private Spinner codeSpinner;
     private ArrayList<String> courseNames;
     private ArrayList<Course> availableCourses;
-
+    private Course Course_to_be_registered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +45,13 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
         courseSpinner = (Spinner) findViewById(R.id.sp_courseName);
         codeSpinner = (Spinner) findViewById(R.id.sp_code);
         availableCourses = (ArrayList<Course>) Utility.getInstance().getAllAvailableCourses();
-        Log.d("coursesize",Integer.toString(availableCourses.size()));
+        Log.d("coursesize", Integer.toString(availableCourses.size()));
         courseNames = new ArrayList<String>();
-        Set <String> tempnames = new HashSet<String>();
+        Set<String> tempnames = new HashSet<String>();
 
-        for(int i = 0; i < availableCourses.size(); i++){
+        for (int i = 0; i < availableCourses.size(); i++) {
             tempnames.add(availableCourses.get(i).getName());
-            Log.d("coursenames",availableCourses.get(i).getName());
+            Log.d("coursenames", availableCourses.get(i).getName());
         }
 
         courseNames.addAll(tempnames);
@@ -59,7 +59,7 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
         arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         courseSpinner.setAdapter(arr_adapter);
         courseSpinner.setOnItemSelectedListener(this);
-        btm.setOnClickListener( new View.OnClickListener() {
+        btm.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -69,12 +69,13 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
                 int course_id = -1;
                 Course tobeRegisterd = null;
 
-                for(int i = 0;i < availableCourses.size();i++) {
+                for (int i = 0; i < availableCourses.size(); i++) {
                     tobeRegisterd = availableCourses.get(i);
                     if (tobeRegisterd.getName().equals(course_name) && tobeRegisterd.getCode() == course_code) {
                         course_id = tobeRegisterd.getID();
-                        if(student.getCourses().contains(tobeRegisterd)){
-                            Toast.makeText(RegisterNewCourse.this,"You are registered this course already",Toast.LENGTH_SHORT).show();
+                        Course_to_be_registered = tobeRegisterd;
+                        if (student.getCourses().contains(tobeRegisterd)) {
+                            Toast.makeText(RegisterNewCourse.this, "You are registered this course already", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -91,7 +92,7 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
                             public void onResponse(String response) {
                                 String resText = response.toString();
 
-                                if(resText.equals("failed") ) {
+                                if (resText.equals("failed")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewCourse.this);
                                     builder.setMessage("Fail to create the group")
                                             .setNegativeButton("RETRY", null)
@@ -101,16 +102,19 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
                                     /* success create
                                        Save the token in a Bundle object and pass it to the userMainActivity
                                      */
+                                    student.joinCourse(Course_to_be_registered);
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewCourse.this);
-                                    builder.setMessage("You've joined")
-                                            .setPositiveButton("Back",  new DialogInterface.OnClickListener() {
+                                    String temp = "You have joined " + Course_to_be_registered.getFullName();
+                                    builder.setMessage(temp)
+                                            .setPositiveButton("Back", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     //do things
-                                                    Intent WelcomePageIntent = new Intent(RegisterNewCourse.this, WelcomePage.class);
+                                                    Intent MainIntent = new Intent(RegisterNewCourse.this, MycourseActivity.class);
                                                     Bundle bundle = new Bundle();
                                                     bundle.putString("token", student.getToken());
-                                                    WelcomePageIntent.putExtras(bundle);
-                                                    RegisterNewCourse.this.startActivity(WelcomePageIntent);
+                                                    MainIntent.putExtras(bundle);
+                                                    MainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    RegisterNewCourse.this.startActivity(MainIntent);
                                                 }
                                             })
                                             .create()
@@ -133,8 +137,8 @@ public class RegisterNewCourse extends AppCompatActivity implements AdapterView.
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String courseName = courseNames.get(position).trim();
         List<String> numbers = new ArrayList<>();
-        for(int i = 0;i < availableCourses.size();i++)
-            if(availableCourses.get(i).getName().equals(courseName))
+        for (int i = 0; i < availableCourses.size(); i++)
+            if (availableCourses.get(i).getName().equals(courseName))
                 numbers.add(Integer.toString(availableCourses.get(i).getCode()));
         Log.d("newgroup", Integer.toString(numbers.size()));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,

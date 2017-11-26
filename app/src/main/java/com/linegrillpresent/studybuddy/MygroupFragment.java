@@ -37,16 +37,16 @@ public class MygroupFragment extends Fragment {
 
     public static MygroupFragment newInstance(Student stu) {
         MygroupFragment fragment = new MygroupFragment();
-       // Bundle args = new Bundle();
-       // args.putSerializable("student", stu);
-       // fragment.setArguments(args);
+        // Bundle args = new Bundle();
+        // args.putSerializable("student", stu);
+        // fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         student = Student.getInstance();
+        student = Student.getInstance();
 
     }
 
@@ -71,7 +71,7 @@ public class MygroupFragment extends Fragment {
 
 
         final String[] listItems = new String[student.getNumberOfGroups()];
-        for(int i = 0;i < student.getNumberOfGroups();i++)
+        for (int i = 0; i < student.getNumberOfGroups(); i++)
             listItems[i] = student.getGroups().get(i);
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);

@@ -24,20 +24,15 @@ public class WaitActivity extends AppCompatActivity {
         user.updateInfo(this);
         user.updateCourseInfo(this);
         user.updateGroupInfo(this);
-        new Thread(new Runnable()
-        {
+        new Thread(new Runnable() {
             @Override
-            public void run()
-            {
-                try
-                {
+            public void run() {
+                try {
                     Thread.sleep(1000);
                     Intent i = new Intent(getApplicationContext(), WelcomePage.class);
                     startActivity(i);
                     finish();
-                }
-                catch (InterruptedException e)
-                {
+                } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }

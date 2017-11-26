@@ -40,7 +40,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
     private Course courseObj;
     private Student student;
     private ListView listview;
-    private  ArrayList<String> groupsInCourse;
+    private ArrayList<String> groupsInCourse;
     private Button myGroup;
     private Button allGroup;
     private Button otherGroup;
@@ -48,6 +48,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
     private Button dropCourse;
     private Activity ctx;
     private String[] listItems;
+
     public ShowClassInfoActivity() {
     }
 
@@ -110,8 +111,8 @@ public class ShowClassInfoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectGroupName = listItems[position];
-                List<String> groupsOfStudents =  student.getGroups();
-                if(groupsOfStudents.contains(selectGroupName)) {
+                List<String> groupsOfStudents = student.getGroups();
+                if (groupsOfStudents.contains(selectGroupName)) {
                     goToGroup(selectGroupName);
 
                 } else {
@@ -128,16 +129,20 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         Intent registerNewGroupIntent = new Intent(ctx, RegisterNewGroup.class);
         ctx.startActivity(registerNewGroupIntent);
     }
+
     private void goToGroup(String selectGroupName) {
         Log.d("ShowClass", "YES!");
         Intent showGroupInfoIntent = new Intent(ctx, ShowGroupInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("group_name", selectGroupName);
+        bundle.putString("current_course_name", (String) tv_course_name.getText());
+        bundle.putString("context", "ShowClassInfoActivity");
         showGroupInfoIntent.putExtras(bundle);
         ctx.startActivity(showGroupInfoIntent);
     }
+
     private void joinNewGroup(final String selectGroupName) {
-        if(selectGroupName.equals("No Group Under This Course Yet!"))
+        if (selectGroupName.equals("No Group Under This Course Yet!"))
             return;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -162,7 +167,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String invite_code = input.getText().toString();
                 Log.d("ShowClass", invite_code);
-                sendJoinGroupRequest(selectGroupName ,invite_code);
+                sendJoinGroupRequest(selectGroupName, invite_code);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -179,8 +184,8 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ShowClassInfoActivity.this);
         builder.setMessage("ARE YOU SURE")
                 .setMessage("Are you sure you want to drop this course? you may join this course later if you like")
-                .setNegativeButton("I change my Mind", null)
-                .setPositiveButton("Yeah I want to drop it",  new DialogInterface.OnClickListener() {
+                .setNegativeButton("I changed my Mind", null)
+                .setPositiveButton("Yeah I want to drop it", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dropTheCourseAction();
@@ -201,7 +206,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         String resText = response;
                         //test.setText("Response is: "+ resText);
-                        if(resText.equals("failed") ) {
+                        if (resText.equals("failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ShowClassInfoActivity.this);
                             builder.setMessage("FAILED")
                                     .setNegativeButton("RETRY", null)
@@ -211,7 +216,8 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                                     /* success
                                      */
                             student.leaveCourse(courseObj.getFullName());
-                            Intent userMainIntent = new Intent(ShowClassInfoActivity.this, WelcomePage.class);
+                            Intent userMainIntent = new Intent(ShowClassInfoActivity.this, MycourseActivity.class);
+                            userMainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             ShowClassInfoActivity.this.startActivity(userMainIntent);
                         }
                     }
@@ -229,6 +235,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         // Add the request to the RequestQueue
         SBRequestQueue.getInstance(this).addToRequestQueue(stringRequest);
     }
+
     private void sendJoinGroupRequest(final String groupName, String inviteCode) {
         String staticURL = this.getResources().getString(R.string.deployURL) + "group?";
         String url = staticURL + "token=" + student.getToken() + "&groupName=" + groupName + "&inviteCode=" + inviteCode + "&action=joinGroup";
@@ -239,7 +246,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         String resText = response;
                         //test.setText("Response is: "+ resText);
-                        if(resText.equals("failed") ) {
+                        if (resText.equals("failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ShowClassInfoActivity.this);
                             builder.setTitle("FAILED")
                                     .setMessage("The invite code you entered is not correct!")
@@ -272,7 +279,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
     private void listPrepare() {
         String staticURL = this.getResources().getString(R.string.deployURL) + "course?";
         String url = staticURL + "token=" + student.getToken() + "&courseId=" + courseObj.getID() + "&action=listGroupsUnderCourse";
-       // final Activity activity = this_act;
+        // final Activity activity = this_act;
         groupsInCourse = new ArrayList();
         Log.d("ShowClass", url);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
@@ -283,14 +290,14 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                         //receive the student'info
                         int length = response.length();
                         Log.d("ShowClass", "length is " + length);
-                        for(int i = 0; i < length;i++)
+                        for (int i = 0; i < length; i++)
                             try {
                                 //if(!groups.contains(response.getString(i)))
-                                    groupsInCourse.add(response.getString(i));
+                                groupsInCourse.add(response.getString(i));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                    createTheFullList();
+                        createTheFullList();
                     }
                 }, new Response.ErrorListener() {
 
@@ -302,9 +309,10 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                 });
         SBRequestQueue.getInstance(this).addToRequestQueue(jsonArrayRequest);
     }
+
     private void createTheFullList() {
         //final String[] listItems;
-        if(groupsInCourse.size() == 0) {
+        if (groupsInCourse.size() == 0) {
             listItems = new String[1];
             listItems[0] = "No Group Under This Course Yet!";
         } else {
@@ -319,17 +327,17 @@ public class ShowClassInfoActivity extends AppCompatActivity {
 
     private void displayMyGroups() {
         //final String[] listItems;
-        if(groupsInCourse.size() == 0) {
+        if (groupsInCourse.size() == 0) {
             listItems = new String[1];
             listItems[0] = "No Group Under This Course Yet!";
         } else {
             ArrayList<String> filterList = new ArrayList<>();
             for (int i = 0; i < groupsInCourse.size(); i++)
-                if(student.joinCourseOrNot(groupsInCourse.get(i)))
+                if (student.joinCourseOrNot(groupsInCourse.get(i)))
                     //listItems[i] = groupsInCourse.get(i);
                     filterList.add(groupsInCourse.get(i));
             listItems = new String[filterList.size()];
-            for(int i = 0;i < filterList.size();i++)
+            for (int i = 0; i < filterList.size(); i++)
                 listItems[i] = filterList.get(i);
             Log.d("ShowClass", "filter length is " + filterList.size());
         }
@@ -340,17 +348,17 @@ public class ShowClassInfoActivity extends AppCompatActivity {
 
     private void displayOtherGroups() {
         //final String[] listItems;
-        if(groupsInCourse.size() == 0) {
+        if (groupsInCourse.size() == 0) {
             listItems = new String[1];
             listItems[0] = "No Group Under This Course Yet!";
         } else {
             ArrayList<String> filterList = new ArrayList<>();
             for (int i = 0; i < groupsInCourse.size(); i++)
-                if(!student.joinCourseOrNot(groupsInCourse.get(i)))
+                if (!student.joinCourseOrNot(groupsInCourse.get(i)))
                     //listItems[i] = groupsInCourse.get(i);
                     filterList.add(groupsInCourse.get(i));
             listItems = new String[filterList.size()];
-            for(int i = 0;i < filterList.size();i++)
+            for (int i = 0; i < filterList.size(); i++)
                 listItems[i] = filterList.get(i);
             Log.d("ShowClass", "filter length is " + filterList.size());
         }

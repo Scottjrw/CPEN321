@@ -11,12 +11,14 @@ public class Course {
     private int course_id;
     private int course_code;
     private String course_name;
-    private  String courseFullName;
+    private String courseFullName;
     private List<String> groups;
     private String course_desc;
 
     public Course(int id, String name, int code, String desc) throws InvalidCourseException {
-        if(id < 0 || name == null || code <0 || name.isEmpty()){ throw new InvalidCourseException();}
+        if (id < 0 || name == null || code < 0 || name.isEmpty()) {
+            throw new InvalidCourseException();
+        }
         this.course_id = id;
         this.course_name = name;
         this.course_code = code;
@@ -37,21 +39,25 @@ public class Course {
         return this.course_name;
     }
 
-    public String getFullName(){
+    public String getFullName() {
         return this.courseFullName;
     }
 
-    public String getDesc() {return course_desc;}
+    public String getDesc() {
+        return course_desc;
+    }
 
-    public void addGroups(String group){
+    public void addGroups(String group) {
         groups.add(group);
     }
-    public List<String> getGroups(){
+
+    public List<String> getGroups() {
         return groups;
     }
+
     @Override
     public boolean equals(Object obj) {
         Course anotherCourse = (Course) obj;
-        return  (this.getFullName().equals(anotherCourse.getFullName()));
+        return (this.getFullName().equals(anotherCourse.getFullName()));
     }
 }

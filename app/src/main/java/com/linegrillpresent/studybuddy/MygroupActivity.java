@@ -17,6 +17,7 @@ import user.Student;
 public class MygroupActivity extends AppCompatActivity {
     private Student student;
     private Context ctx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class MygroupActivity extends AppCompatActivity {
 
 
         final String[] listItems = new String[student.getNumberOfGroups()];
-        for(int i = 0;i < student.getNumberOfGroups();i++)
+        for (int i = 0; i < student.getNumberOfGroups(); i++)
             listItems[i] = student.getGroups().get(i);
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(ctx, R.layout.list_view, listItems);
@@ -54,12 +55,12 @@ public class MygroupActivity extends AppCompatActivity {
                 Intent showGroupInfoIntent = new Intent(ctx, ShowGroupInfoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("group_name", selectGroupName);
+                bundle.putString("context", "MygroupActivity");
                 showGroupInfoIntent.putExtras(bundle);
                 ctx.startActivity(showGroupInfoIntent);
             }
         });
     }
-
 
 
 }

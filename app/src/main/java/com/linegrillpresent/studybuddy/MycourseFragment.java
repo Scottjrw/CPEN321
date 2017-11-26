@@ -51,7 +51,6 @@ public class MycourseFragment extends Fragment {
      * @return A new instance of fragment MycourseFragment.
      */
     // TODO: Rename and change types and number of parameters
-
     public static MycourseFragment newInstance(String param1, String param2) {
         MycourseFragment fragment = new MycourseFragment();
         Bundle args = new Bundle();
@@ -78,7 +77,7 @@ public class MycourseFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.course_listview);
         TextView overview = (TextView) view.findViewById(R.id.course_tv_overview);
         Button btm = (Button) view.findViewById(R.id.btm_jnc);
-        Student student= Student.getInstance();
+        Student student = Student.getInstance();
         btm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +88,8 @@ public class MycourseFragment extends Fragment {
 
         overview.setText("You have registered for " + student.getNumberOfCourses() + " courses:");
         Log.d("onclickcourse", "onCreateView: " + student.getNumberOfCourses());
-        final String[] listItems = new String [student.getNumberOfCourses()];
-        for(int i = 0;i < student.getNumberOfCourses();i++)
+        final String[] listItems = new String[student.getNumberOfCourses()];
+        for (int i = 0; i < student.getNumberOfCourses(); i++)
             listItems[i] = student.getCourses().get(i).getFullName();
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_view, listItems);

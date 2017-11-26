@@ -1,5 +1,6 @@
 package com.linegrillpresent.studybuddy;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,19 +28,22 @@ import SBRequestManager.SBRequestQueue;
 import system.Course;
 import user.Student;
 
-public class RegisterNewGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class RegisterNewGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner courseSpinner;
     private Spinner numSpinner;
     private ArrayList<String> courseNames;
     private ArrayList<Course> course;
+    private String group_name;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-      try{
-          super.onCreate(savedInstanceState);
-      }catch (Exception e){
-      }
+        try {
+            super.onCreate(savedInstanceState);
+        } catch (Exception e) {
+        }
+        ctx = this;
         setContentView(R.layout.activity_register_new_group);
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
         final EditText et_name = (EditText) findViewById(R.id.et_GroupName);
@@ -50,17 +54,14 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         final EditText inviteCode = (EditText) findViewById(R.id.et_inviteC);
         inviteCode.setVisibility(View.INVISIBLE);
 
-        isPrivate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        isPrivate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton cb, boolean on){
-                if(on)
-                {
+            public void onCheckedChanged(CompoundButton cb, boolean on) {
+                if (on) {
                     //Do something when Switch button is on/checked
                     //tView.setText("Switch is on.....");
                     inviteCode.setVisibility(View.VISIBLE);
-                }
-                else
-                {
+                } else {
                     //Do something when Switch is off/unchecked
                     //tView.setText("Switch is off.....");
                     inviteCode.setVisibility(View.INVISIBLE);
@@ -75,8 +76,8 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         Log.d("newgroup", "student has " + course.size() + "courses");
         courseNames = new ArrayList<String>();
 
-        for(int i = 0; i < course.size();i++) {
-            if(!courseNames.contains(course.get(i).getName()))
+        for (int i = 0; i < course.size(); i++) {
+            if (!courseNames.contains(course.get(i).getName()))
                 courseNames.add(course.get(i).getName());
         }
         Log.d("newgroup", Integer.toString(courseNames.size()));
@@ -88,14 +89,14 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
         courseSpinner.setAdapter(arr_adapter);
         courseSpinner.setOnItemSelectedListener(this);
 
-        btm.setOnClickListener( new View.OnClickListener() {
+        btm.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                String name = et_name.getText().toString();
+                group_name = et_name.getText().toString();
                 int privateOrNot;
-                if(isPrivate.isChecked())
+                if (isPrivate.isChecked())
                     privateOrNot = 1;
                 else privateOrNot = 0;
                 String inCode = inviteCode.getText().toString();
@@ -103,9 +104,9 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                 String course_name = courseSpinner.getSelectedItem().toString();
                 int course_num = Integer.parseInt(numSpinner.getSelectedItem().toString());
                 int course_id = -1;
-                for(int i = 0;i < course.size();i++) {
+                for (int i = 0; i < course.size(); i++) {
                     Course c = course.get(i);
-                    if(c.getName().equals(course_name) && c.getCode() == course_num)
+                    if (c.getName().equals(course_name) && c.getCode() == course_num)
                         course_id = c.getID();
                 }
 
@@ -113,10 +114,10 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
 
                 String staticURL = getResources().getString(R.string.deployURL) + "group?";
                 String url = staticURL + "token=" + student.getToken() + "&isPrivate=" + privateOrNot +
-                             "&groupName=" + name +
-                             "&inviteCode=" + inCode +
-                             "&courseId=" + course_id +
-                             "&action=createGroup";
+                        "&groupName=" + group_name +
+                        "&inviteCode=" + inCode +
+                        "&courseId=" + course_id +
+                        "&action=createGroup";
 
                 Log.d("newgroup", url);
 
@@ -126,7 +127,7 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                             public void onResponse(String response) {
                                 String resText = response.toString();
 
-                                if(resText.equals("failed") ) {
+                                if (resText.equals("failed")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewGroup.this);
                                     builder.setMessage("Fail to create the group")
                                             .setNegativeButton("RETRY", null)
@@ -136,16 +137,18 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
                                     /* success create
                                        Save the token in a Bundle object and pass it to the userMainActivity
                                      */
+                                    student.joinGroup(group_name);
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterNewGroup.this);
-                                    builder.setMessage("Create group success!")
-                                            .setPositiveButton("Back",  new DialogInterface.OnClickListener() {
+                                    builder.setMessage("Create group " + group_name + " success!")
+                                            .setPositiveButton("Back", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     //do things
-                                                    Intent WelcomePageIntent = new Intent(RegisterNewGroup.this, WelcomePage.class);
+                                                    Intent MainIntent = new Intent(RegisterNewGroup.this, MygroupActivity.class);
                                                     Bundle bundle = new Bundle();
                                                     bundle.putString("token", student.getToken());
-                                                    WelcomePageIntent.putExtras(bundle);
-                                                    RegisterNewGroup.this.startActivity(WelcomePageIntent);
+                                                    MainIntent.putExtras(bundle);
+                                                    MainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    RegisterNewGroup.this.startActivity(MainIntent);
                                                 }
                                             })
                                             .create()
@@ -171,8 +174,8 @@ public class RegisterNewGroup extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String courseName = courseNames.get(position).trim();
         List<String> numbers = new ArrayList<>();
-        for(int i = 0;i < course.size();i++)
-            if(course.get(i).getName().equals(courseName))
+        for (int i = 0; i < course.size(); i++)
+            if (course.get(i).getName().equals(courseName))
                 numbers.add(Integer.toString(course.get(i).getCode()));
 
         Log.d("newgroup", Integer.toString(numbers.size()));

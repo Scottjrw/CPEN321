@@ -37,15 +37,19 @@ import static com.linegrillpresent.studybuddy.R.id.btn_leave;
 public class ShowGroupInfoActivity extends AppCompatActivity {
 
     private String group_name;
-    private final List<String> groupMembers =  new ArrayList<String>();
+    private final List<String> groupMembers = new ArrayList<String>();
     private ListView groupMemList;
     private ListView disBoardList;
-    private Button   postButton;
-    private Button   editAnnounceButton;
+    private Button postButton;
+    private Button editAnnounceButton;
     private EditText postEditText;
     private TextView announcementTextView;
     private Button leaveButton;
     private Student student;
+    private String calling_activity_name;
+    private String calling_course_name;
+    private boolean return_to_calling_activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,11 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
 
         Bundle tokenBundle = getIntent().getExtras();
         group_name = tokenBundle.getString("group_name");
+        calling_activity_name = tokenBundle.getString(("context"));
+        if (calling_activity_name.equals("ShowClassInfoActivity")) {
+            calling_course_name = tokenBundle.getString("current_course_name");
+            return_to_calling_activity = true;
+        }
 
         //-----get view fragment---------------
         groupMemList = (ListView) findViewById(R.id.listview_GroupMemList);
@@ -77,7 +86,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String postString = postEditText.getText().toString();
-                if(postString.equals(""))
+                if (postString.equals(""))
                     return;
                 String token = student.getToken();
 
@@ -90,7 +99,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 String resText = response;
                                 //test.setText("Response is: "+ resText);
-                                if(resText.equals("failed") ) {
+                                if (resText.equals("failed")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
                                     builder.setMessage("POST FAILED")
                                             .setNegativeButton("RETRY", null)
@@ -122,9 +131,11 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         });
 
     }
+
     private void refreshPage() {
         requestGroupInfo();
     }
+
     private void announceButtonOnClick() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("New Announcement");
@@ -142,7 +153,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String m_Text = input.getText().toString();
                 Log.d("group", m_Text);
-                if(m_Text.equals("null"))
+                if (m_Text.equals("null"))
                     m_Text = "The Announcement Has Not Set Yet!";
                 announcementTextView.setText(m_Text);
                 sendChangeAnnouncementRequest(m_Text);
@@ -157,11 +168,12 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
 
         builder.show();
     }
+
     private void sendChangeAnnouncementRequest(String newAnnouncement) {
         String token = student.getToken();
         String staticURL = getResources().getString(R.string.deployURL) + "group?action=updateAnnouncement&";
-        String url =  staticURL + "token=" + token + "&groupName=" + group_name + "&post=" + newAnnouncement;
-        Log.d("ShowGroup", url) ;
+        String url = staticURL + "token=" + token + "&groupName=" + group_name + "&post=" + newAnnouncement;
+        Log.d("ShowGroup", url);
         final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -169,7 +181,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         String resText = response;
                         //test.setText("Response is: "+ resText);
-                        if(resText.equals("failed") ) {
+                        if (resText.equals("failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
                             builder.setMessage("Announcement Edit Failed")
                                     .setNegativeButton("RETRY", null)
@@ -198,11 +210,12 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         // Add the request to the RequestQueue
         SBQueue.addToRequestQueue(stringRequest);
     }
+
     private void requestGroupInfo() {
 
         String token = student.getToken();
         String staticURL = getResources().getString(R.string.deployURL) + "group?action=listUser&";
-        String url =  staticURL + "token=" + token + "&groupName=" + group_name;
+        String url = staticURL + "token=" + token + "&groupName=" + group_name;
         Log.d("url", url);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -215,8 +228,8 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                         try {
                             JSONArray jsonArrayMember = response.getJSONArray(0);
                             int memberLength = jsonArrayMember.length();
-                            for(int i = 0;i < memberLength;i++)
-                                if(!groupMembers.contains(jsonArrayMember.getString(i)))
+                            for (int i = 0; i < memberLength; i++)
+                                if (!groupMembers.contains(jsonArrayMember.getString(i)))
                                     groupMembers.add(jsonArrayMember.getString(i));
                             Log.d("hello", "jsonArray Member length is " + memberLength);
                         } catch (JSONException e) {
@@ -225,7 +238,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
 
                         try {
                             String announcement = response.getString(1);
-                            if(announcement.equals("null"))
+                            if (announcement.equals("null"))
                                 announcement = "The announcement Has not Set Yet!";
                             announcementTextView.setText(announcement);
 
@@ -266,7 +279,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         List<HashMap<String, String>> listItems = new ArrayList<>();
         int messageNum = array.length();
 
-        for(int i = 0;i < messageNum;i++) {
+        for (int i = 0; i < messageNum; i++) {
             HashMap<String, String> oneMessage = new HashMap<>();
             JSONObject oneJsonObject = array.getJSONObject(i);
             String author = oneJsonObject.getString("author");
@@ -308,8 +321,8 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
         builder.setMessage("ARE YOU SURE")
                 .setMessage("Are you sure you want to leave this group? you may join this group later if you like")
-                .setNegativeButton("I change my Mind", null)
-                .setPositiveButton("Yeah I want to leave",  new DialogInterface.OnClickListener() {
+                .setNegativeButton("I changed my mind", null)
+                .setPositiveButton("Yeah I want to leave", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         leaveTheGroup();
@@ -330,7 +343,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         String resText = response;
                         //test.setText("Response is: "+ resText);
-                        if(resText.equals("failed") ) {
+                        if (resText.equals("failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ShowGroupInfoActivity.this);
                             builder.setMessage("FAILED")
                                     .setNegativeButton("RETRY", null)
@@ -340,8 +353,18 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                                     /* success
                                      */
                             student.leaveGroup(group_name);
-                            Intent userMainIntent = new Intent(ShowGroupInfoActivity.this, WelcomePage.class);
-                            ShowGroupInfoActivity.this.startActivity(userMainIntent);
+                            if (return_to_calling_activity) {
+                                Intent userMainIntent = new Intent(ShowGroupInfoActivity.this, ShowClassInfoActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("course_name", calling_course_name);
+                                userMainIntent.putExtras(bundle);
+                                userMainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                ShowGroupInfoActivity.this.startActivity(userMainIntent);
+                            } else {
+                                Intent userMainIntent = new Intent(ShowGroupInfoActivity.this, MygroupActivity.class);
+                                userMainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                ShowGroupInfoActivity.this.startActivity(userMainIntent);
+                            }
                         }
                     }
                 }, new Response.ErrorListener() {

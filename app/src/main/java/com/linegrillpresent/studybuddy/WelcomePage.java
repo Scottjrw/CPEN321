@@ -17,6 +17,7 @@ public class WelcomePage extends AppCompatActivity {
     private String token;
     private Student student_user;
     private Context ctx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +76,7 @@ public class WelcomePage extends AppCompatActivity {
         builder.setMessage("Log Out")
                 .setMessage("Are you sure you want to Log out now?")
                 .setNegativeButton("Cancel", null)
-                .setPositiveButton("Yeah",  new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yeah", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         cleanCache();

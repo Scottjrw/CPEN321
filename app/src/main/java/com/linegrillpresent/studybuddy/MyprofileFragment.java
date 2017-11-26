@@ -22,7 +22,7 @@ import user.Student;
  * Use the {@link MyprofileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyprofileFragment extends Fragment implements View.OnClickListener{
+public class MyprofileFragment extends Fragment implements View.OnClickListener {
 
     private String username;
     private String name;
@@ -37,9 +37,9 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
 
     public static MyprofileFragment newInstance(Student stu) {
         MyprofileFragment fragment = new MyprofileFragment();
-       // Bundle args = new Bundle();
-       // args.putSerializable("student", stu);
-       // fragment.setArguments(args);
+        // Bundle args = new Bundle();
+        // args.putSerializable("student", stu);
+        // fragment.setArguments(args);
         return fragment;
     }
 
@@ -56,12 +56,13 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         email = student.getEmail();
         numGroups = student.getNumberOfGroups();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view;
-        view= inflater.inflate(R.layout.fragment_myprofile, container, false);
+        view = inflater.inflate(R.layout.fragment_myprofile, container, false);
 
 
         Button r = (Button) view.findViewById(R.id.btn_refreshProfile);
@@ -72,12 +73,12 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
         TextView tvEmail = (TextView) view.findViewById(R.id.tv_email);
         TextView tvnumGroups = (TextView) view.findViewById(R.id.tvnumGroup);
 
-        tvName.setText( "Hello " + name + ",");
+        tvName.setText("Hello " + name + ",");
         tvUsername.setText("Your username is: " + username);
         tvEmail.setText("Your email is: " + email);
         tvnumGroups.setText("You are currently in " + numGroups + " groups!");
 
-        return  view;
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,7 +107,7 @@ public class MyprofileFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getActivity(),"BUTTON5",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "BUTTON5", Toast.LENGTH_SHORT).show();
     }
 
     /**

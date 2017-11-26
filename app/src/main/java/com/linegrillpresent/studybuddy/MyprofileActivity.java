@@ -31,7 +31,7 @@ public class MyprofileActivity extends AppCompatActivity {
         TextView tvEmail = (TextView) findViewById(R.id.tv_email);
         TextView tvnumGroups = (TextView) findViewById(R.id.tvnumGroup);
 
-        tvName.setText( "Hello " + name + ",");
+        tvName.setText("Hello " + name + ",");
         tvUsername.setText("Your username is: " + username);
         tvEmail.setText("Your email is: " + email);
         tvnumGroups.setText("You are currently in " + numGroups + " groups!");

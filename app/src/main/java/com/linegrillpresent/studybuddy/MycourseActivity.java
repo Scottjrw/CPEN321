@@ -16,6 +16,7 @@ import user.Student;
 
 public class MycourseActivity extends AppCompatActivity {
     private Context ctx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ public class MycourseActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.course_listview);
         TextView overview = (TextView) findViewById(R.id.course_tv_overview);
         Button btm = (Button) findViewById(R.id.btm_jnc);
-        Student student= Student.getInstance();
+        Student student = Student.getInstance();
         btm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +37,8 @@ public class MycourseActivity extends AppCompatActivity {
 
         overview.setText("You have registered for " + student.getNumberOfCourses() + " courses:");
         Log.d("onclickcourse", "onCreateView: " + student.getNumberOfCourses());
-        final String[] listItems = new String [student.getNumberOfCourses()];
-        for(int i = 0;i < student.getNumberOfCourses();i++)
+        final String[] listItems = new String[student.getNumberOfCourses()];
+        for (int i = 0; i < student.getNumberOfCourses(); i++)
             listItems[i] = student.getCourses().get(i).getFullName();
         //ArrayAdapter adapter = new ArrayAdapter(view, list_view, listItems);
         ArrayAdapter adapter = new ArrayAdapter(ctx, R.layout.list_view, listItems);

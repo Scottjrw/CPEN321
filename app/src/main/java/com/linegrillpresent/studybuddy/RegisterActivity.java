@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String staticURL = getResources().getString(R.string.deployURL) + "register?";
                 String url = staticURL + "username=" + username + "&password=" + password
-                                            +"&email="+ email + "&studentName=" + name;
+                        + "&email=" + email + "&studentName=" + name;
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
@@ -51,20 +51,20 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 String resText = response.toString();
 
-                                if(resText.equals("succeed") ) {
+                                if (resText.equals("succeed")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("Register Succeed, Plase Login")
                                             .setNegativeButton("CLOSE", null)
-                                            .setPositiveButton("LOGIN",  new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-                                                        //do things
-                                                        Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                                        RegisterActivity.this.startActivity(loginIntent);
-                                                    }
-                                                })
+                                            .setPositiveButton("LOGIN", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    //do things
+                                                    Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                    RegisterActivity.this.startActivity(loginIntent);
+                                                }
+                                            })
                                             .create()
                                             .show();
-                                } else if(resText.equals("usernameExists")){
+                                } else if (resText.equals("usernameExists")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("The username has been used")
                                             .setNegativeButton("CLOSE", null)

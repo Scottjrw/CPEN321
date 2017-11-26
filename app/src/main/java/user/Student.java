@@ -47,13 +47,14 @@ public class Student implements User {
     }
 
     public static Student getInstance() {
-        if(instance == null)
+        if (instance == null)
             instance = new Student();
         return instance;
     }
-    public  void updateGroupsUnderCourse(Activity this_act, final Course course){
+
+    public void updateGroupsUnderCourse(Activity this_act, final Course course) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "course?";
-        String url = staticURL + "token=" + token +"&courseId="+ course.getID() + "&action=listGroupsUnderCourse";
+        String url = staticURL + "token=" + token + "&courseId=" + course.getID() + "&action=listGroupsUnderCourse";
         final Activity activity = this_act;
 
         final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
@@ -62,7 +63,7 @@ public class Student implements User {
                     public void onResponse(JSONArray response) {
                         //receive the student'info
                         int length = response.length();
-                        for(int i = 0; i < length;i++)
+                        for (int i = 0; i < length; i++)
                             try {
                                 course.addGroups(response.getString(i));
                                 Log.d("addG", "onResponse:" + response.getString(i));
@@ -80,23 +81,23 @@ public class Student implements User {
                 });
         SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
     }
-    public void  updateGroupInfo(Activity this_act) {
+
+    public void updateGroupInfo(Activity this_act) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "group?";
         String url = staticURL + "token=" + token + "&action=listGroup";
         final Activity activity = this_act;
 
-       // groups = new ArrayList<String>();
-
-        JsonArrayRequest  jsonArrayRequest = new JsonArrayRequest
+        // groups = new ArrayList<String>();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
                         //receive the student'info
                         int length = response.length();
-                        for(int i = 0; i < length;i++)
+                        for (int i = 0; i < length; i++)
                             try {
-                                if(!groups.contains(response.getString(i)))
+                                if (!groups.contains(response.getString(i)))
                                     groups.add(response.getString(i));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -112,7 +113,7 @@ public class Student implements User {
         SBRequestQueue.getInstance(activity).addToRequestQueue(jsonArrayRequest);
     }
 
-    public void  updateCourseInfo(Activity this_act) {
+    public void updateCourseInfo(Activity this_act) {
         String staticURL = this_act.getResources().getString(R.string.deployURL) + "course?";
         String url = staticURL + "token=" + token + "&action=listCourses";
         final Activity activity = this_act;
@@ -128,11 +129,11 @@ public class Student implements User {
                         } catch (InvalidUserException e) {
                             e.printStackTrace();
                         }
-                        for(int i = 0; i < length;i++)
+                        for (int i = 0; i < length; i++)
                             try {
                                 JSONObject object = response.getJSONObject(i);
                                 Course course = new Course(object.getInt("id"), object.getString("courseName"), object.getInt("courseNum"), object.getString("description"));
-                                if(!courses.contains(course))
+                                if (!courses.contains(course))
                                     courses.add(course);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -165,7 +166,7 @@ public class Student implements User {
                             setName(response.get("studentName").toString());
                             setEmail(response.get("email").toString());
                             setUsername(response.get("username").toString());
-                            setNumberOfGroups( response.getInt("numOfGroups"));
+                            setNumberOfGroups(response.getInt("numOfGroups"));
                             isSet = true;
                         } catch (JSONException e) {
                             Log.d("Student", "CANNOT UPDATE INFO");
@@ -197,8 +198,8 @@ public class Student implements User {
     }
 
     @Override
-    public void setToken(String s) throws InvalidUserException{
-        if(s == null || s.isEmpty()) throw new InvalidUserException();
+    public void setToken(String s) throws InvalidUserException {
+        if (s == null || s.isEmpty()) throw new InvalidUserException();
         this.token = s;
     }
 
@@ -209,7 +210,7 @@ public class Student implements User {
 
     @Override
     public void setName(String name) throws InvalidUserException {
-        if(name==null || name.isEmpty()) throw new InvalidUserException();
+        if (name == null || name.isEmpty()) throw new InvalidUserException();
         this.name = name;
     }
 
@@ -219,8 +220,8 @@ public class Student implements User {
     }
 
     @Override
-    public void setUsername(String username) throws InvalidUserException{
-        if(username==null || username.isEmpty()) throw new InvalidUserException();
+    public void setUsername(String username) throws InvalidUserException {
+        if (username == null || username.isEmpty()) throw new InvalidUserException();
         this.username = username;
     }
 
@@ -230,8 +231,8 @@ public class Student implements User {
     }
 
     @Override
-    public void setEmail(String Email) throws InvalidUserException{
-        if(Email==null || Email.isEmpty()) throw new InvalidUserException();
+    public void setEmail(String Email) throws InvalidUserException {
+        if (Email == null || Email.isEmpty()) throw new InvalidUserException();
         this.email = Email;
     }
 
@@ -239,28 +240,42 @@ public class Student implements User {
     public String getEmail() {
         return email;
     }
+
     @Override
-    public int getNumberOfGroups() {return numberOfGroups;}
-    @Override
-    public void setNumberOfGroups(int groups) throws InvalidUserException{
-        if(groups < 0) throw new InvalidUserException();
-       this. numberOfGroups = groups;
+    public int getNumberOfGroups() {
+        return numberOfGroups;
     }
+
     @Override
-    public  int getNumberOfCourses(){return  numberOfCourses;}
+    public void setNumberOfGroups(int groups) throws InvalidUserException {
+        if (groups < 0) throw new InvalidUserException();
+        this.numberOfGroups = groups;
+    }
+
     @Override
-    public  void setNumberOfCourses(int courses)throws InvalidUserException{
-        if(courses < 0) throw new InvalidUserException();
+    public int getNumberOfCourses() {
+        return numberOfCourses;
+    }
+
+    @Override
+    public void setNumberOfCourses(int courses) throws InvalidUserException {
+        if (courses < 0) throw new InvalidUserException();
         this.numberOfCourses = courses;
     }
+
     @Override
-    public List<String> getGroups() {return groups;}
+    public List<String> getGroups() {
+        return groups;
+    }
+
     @Override
-    public List<Course> getCourses() {return courses;}
+    public List<Course> getCourses() {
+        return courses;
+    }
 
     public Course getCourseObj(String course_name) {
-        for(int i = 0;i < courses.size();i++)
-            if(courses.get(i).getFullName().equals(course_name))
+        for (int i = 0; i < courses.size(); i++)
+            if (courses.get(i).getFullName().equals(course_name))
                 return courses.get(i);
         return null;
     }
@@ -282,18 +297,31 @@ public class Student implements User {
     }
 
     public void leaveGroup(String group_name) {
-        if(groups.contains(group_name))
+        if (groups.contains(group_name)) {
             groups.remove(group_name);
-        else
+            numberOfGroups--;
+        } else
             Log.d("ShowGroup", "FATAL ERROR");
     }
 
+    public void joinGroup(String group_name) {
+        groups.add(group_name);
+        numberOfGroups++;
+    }
+
     public void leaveCourse(String course_name) {
-       Course courseObj =  getCourseObj(course_name);
-        if(courses.contains(courseObj))
+        Course courseObj = getCourseObj(course_name);
+        if (courses.contains(courseObj)) {
             courses.remove(courseObj);
-        else
+            numberOfCourses--;
+        } else
             Log.d("ShowClass", "FATAL ERROR");
+    }
+
+    public void joinCourse(Course tob_be_registered) {
+        Course courseObj = tob_be_registered;
+        courses.add(courseObj);
+        numberOfCourses++;
     }
 
     public void destroy() {
