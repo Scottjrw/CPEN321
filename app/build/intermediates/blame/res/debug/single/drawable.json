@@ -84,6 +84,10 @@
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable/abc_ic_voice_search_api_material.xml"
     },
     {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/icon_study_room.png",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/icon_study_room.png"
+    },
+    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable/abc_item_background_holo_dark.xml"
     },
@@ -114,6 +118,10 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/sb.JPG",
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/sb.JPG"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/sauder.jpg",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/sauder.jpg"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/ic_menu_share.xml",
@@ -176,6 +184,10 @@
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/profile_icon.png"
     },
     {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/ubc_lib.jpg",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/ubc_lib.jpg"
+    },
+    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/side_nav_bar.xml",
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/side_nav_bar.xml"
     },
@@ -210,6 +222,10 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable/abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/ece_logo.png",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/ece_logo.png"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",

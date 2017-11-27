@@ -38,6 +38,10 @@
         <activity android:name="com.linegrillpresent.studybuddy.MygroupActivity" />
         <activity android:name="com.linegrillpresent.studybuddy.MyprofileActivity" />
         <activity android:name="com.linegrillpresent.studybuddy.WelcomePage" />
+        <activity
+            android:name="com.linegrillpresent.studybuddy.BookingActivity"
+            android:label="@string/title_activity_booking"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

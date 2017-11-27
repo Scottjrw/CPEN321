@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ubc_lib"
+        android:layout_marginBottom="386dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tv_generallibs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/section_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="189dp"
+        android:text="General Library Info" />
+
+    <TextView
+        android:id="@+id/tv_ikbbooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_generallibs"
+        android:layout_below="@+id/tv_generallibs"
+        android:layout_marginTop="18dp"
+        android:text="IKB Booking" />
+
+    <TextView
+        android:id="@+id/tv_koernerbooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_ikbbooking"
+        android:layout_below="@+id/tv_ikbbooking"
+        android:layout_marginTop="24dp"
+        android:text="Koerner Booking" />
+
+    <TextView
+        android:id="@+id/tv_woodwardbooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_koernerbooking"
+        android:layout_below="@+id/tv_koernerbooking"
+        android:layout_marginTop="23dp"
+        android:text="Woodward Booking" />
+
+</RelativeLayout>

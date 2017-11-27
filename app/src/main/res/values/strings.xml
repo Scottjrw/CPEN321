@@ -11,13 +11,8 @@
     <string name="android_studio">Android Studio</string>
     <string name="android_studio_android_com">android.studio@android.com</string>
 
-<<<<<<< HEAD
     <string name="deployURL">http://206.87.129.107:8080/Servlet/</string>>
     <!--string name="deployURL">http://47.88.53.126:8080/Servlet/</string>-->
-=======
-    <!-->http://206.87.128.123:8080 -->
-    <string name="deployURL">http://47.88.53.126:8080/Servlet/</string>
     <string name="title_activity_booking">BookingActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>>
->>>>>>> alpha
 </resources>

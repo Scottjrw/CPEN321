@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:3:5-46
 		INJECTED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/
 	android:name
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:7:5-33:19
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:7:5-37:19
 MERGED from [com.android.volley:volley:1.0.0] /Users/miketang/.android/build-cache/5bfc788f9cfc9cb62f210c8c66a17910708dbd9e/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] /Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/AndroidManifest.xml:29:5-20
@@ -95,9 +95,17 @@ ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/
 	android:name
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:31:19-52
 activity#com.linegrillpresent.studybuddy.WelcomePage
-ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:9-58
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:9-49
 	android:name
 		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:32:19-46
+activity#com.linegrillpresent.studybuddy.BookingActivity
+ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:33:9-36:68
+	android:label
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:35:13-59
+	android:theme
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:36:13-56
+	android:name
+		ADDED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml:34:13-44
 uses-sdk
 INJECTED from /Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.volley:volley:1.0.0] /Users/miketang/.android/build-cache/5bfc788f9cfc9cb62f210c8c66a17910708dbd9e/output/AndroidManifest.xml:7:5-43
