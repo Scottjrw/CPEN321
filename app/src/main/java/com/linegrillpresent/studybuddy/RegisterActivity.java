@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = etUsername.getText().toString();
+                final String username = etUsername.getText().toString().toLowerCase();
                 final String password = etPassword.getText().toString();
                 final String email = etEmail.getText().toString();
                 final String name = etName.getText().toString();

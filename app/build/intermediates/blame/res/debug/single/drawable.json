@@ -12,12 +12,12 @@
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/border.xml"
     },
     {
-        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/group_icon.png",
-        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/group_icon.png"
-    },
-    {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/my_course_long.png",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/my_course_long.png"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
@@ -122,6 +122,10 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/sauder.jpg",
         "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/sauder.jpg"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/my_course_final_long.png",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/drawable/my_course_final_long.png"
     },
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/drawable/ic_menu_share.xml",

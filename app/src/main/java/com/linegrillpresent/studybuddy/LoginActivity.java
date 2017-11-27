@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Instantiate the RequestQueue.
-                final String username = etName.getText().toString();
+                final String username = etName.getText().toString().toLowerCase();
                 final String password = etPassword.getText().toString();
 
                 String staticURL = getResources().getString(R.string.deployURL) + "login?";

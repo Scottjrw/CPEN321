@@ -286,5 +286,9 @@
     {
         "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
         "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/debug/layout/activity_welcome_page_back.xml",
+        "source": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/src/main/res/layout/activity_welcome_page_back.xml"
     }
 ]
