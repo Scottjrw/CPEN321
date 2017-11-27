@@ -1,4 +1,0 @@
-#Sun Nov 26 17:55:38 PST 2017
-base.0=/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7
-renamed.0=classes.dex
-file.0=/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex
