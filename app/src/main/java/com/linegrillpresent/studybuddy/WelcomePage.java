@@ -28,7 +28,7 @@ public class WelcomePage extends AppCompatActivity {
         Button btn1 = (Button) findViewById(R.id.myprofile);
         Button btn2 = (Button) findViewById(R.id.mycourses);
         Button btn3 = (Button) findViewById(R.id.mygroups);
-        Button btn4 = (Button) findViewById(R.id.button4);
+        Button btn4 = (Button) findViewById(R.id.btn_booking);
         Button logoutbtn = (Button) findViewById(R.id.btn_logout);
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,13 @@ public class WelcomePage extends AppCompatActivity {
                 ctx.startActivity(userMainIntent);
             }
         });
-
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userMainIntent = new Intent(ctx, BookingActivity.class);
+                ctx.startActivity(userMainIntent);
+            }
+        });
         Log.d("cpen", "oncreate");
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
