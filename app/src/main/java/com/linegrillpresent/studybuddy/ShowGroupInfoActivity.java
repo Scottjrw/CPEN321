@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -49,6 +51,9 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
     private String calling_activity_name;
     private String calling_course_name;
     private boolean return_to_calling_activity;
+    private TextView tv_coursename;
+    private TextView tv_groupname;
+    private Button btn_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +76,12 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         announcementTextView = (TextView) findViewById(R.id.tv_anounceText);
         editAnnounceButton = (Button) findViewById(R.id.btn_editannounce);
         leaveButton = (Button) findViewById(btn_leave);
+        tv_coursename = (TextView) findViewById(R.id.tv_course_name);
+        tv_groupname = (TextView) findViewById(R.id.tv_group_name);
+        btn_refresh = (Button) findViewById(R.id.btn_refresh);
         //---------------------
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
         student = Student.getInstance();
         requestGroupInfo();
@@ -129,7 +139,16 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                 announceButtonOnClick();
             }
         });
-
+        btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ShowGroupInfoActivity.this, "REFRESH!", Toast.LENGTH_SHORT).show();
+                refreshPage();
+            }
+        });
+        tv_groupname.setText(group_name);
+        //tv_coursename.setText("COURSE_NAME");
+        requestCourseNameInfo();
     }
 
     private void refreshPage() {
@@ -210,7 +229,32 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
         // Add the request to the RequestQueue
         SBQueue.addToRequestQueue(stringRequest);
     }
+    private void requestCourseNameInfo() {
+        String token = student.getToken();
+        String staticURL = getResources().getString(R.string.deployURL) + "group?action=getCourseName&";
+        String url = staticURL + "token=" + token + "&groupName=" + group_name;
+        Log.d("url", url);
+        final SBRequestQueue SBQueue = SBRequestQueue.getInstance(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String courseIDString = response;
+                        Log.d("group", "course id is " + courseIDString);
+                        int courseID = Integer.parseInt(courseIDString);
+                        String courseName = student.getCourseNameByID(courseID);
+                        tv_coursename.setText(courseName);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // access the server fail
 
+            }
+        });
+        // Add the request to the RequestQueue
+        SBQueue.addToRequestQueue(stringRequest);
+    }
     private void requestGroupInfo() {
 
         String token = student.getToken();
@@ -270,7 +314,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
 
     private void initializeMemberList() {
         ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groupMembers);
+                new ArrayAdapter<String>(this, R.layout.list_view, groupMembers);
         Log.d("group", "Group member list has length " + groupMembers.size());
         groupMemList.setAdapter(itemsAdapter);
     }

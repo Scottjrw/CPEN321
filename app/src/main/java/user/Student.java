@@ -280,6 +280,13 @@ public class Student implements User {
         return null;
     }
 
+    public String getCourseNameByID(int id) {
+        for (int i = 0;i < courses.size();i++)
+            if(courses.get(i).getID() == id)
+                return courses.get(i).getFullName();
+        return "Course UNKNOWN";
+    }
+
     public boolean joinCourseOrNot(String course_name) {
         /*
         if(courses == null)
