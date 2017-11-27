@@ -29,7 +29,11 @@
         <activity android:name=".MycourseActivity" />
         <activity android:name=".MygroupActivity" />
         <activity android:name=".MyprofileActivity" />
-        <activity android:name=".WelcomePage"></activity>
+        <activity android:name=".WelcomePage" />
+        <activity
+            android:name=".BookingActivity"
+            android:label="@string/title_activity_booking"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
