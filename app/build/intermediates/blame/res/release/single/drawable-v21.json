@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/avd_hide_password.xml",
+        "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/drawable-v21/avd_hide_password.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/avd_show_password.xml",
+        "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/drawable-v21/avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/design_password_eye.xml",
+        "source": "/Users/miketang/.android/build-cache/2a8bf84d257c0f31ff0309eb3ddc6d28ac5f8f26/output/res/drawable-v21/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/miketang/AndroidStudioProjects/real_proj/CPEN321/app/build/intermediates/res/merged/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/miketang/.android/build-cache/59ca212fd6b4f515a98c5d39b5fe2219479ebd0b/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    }
+]

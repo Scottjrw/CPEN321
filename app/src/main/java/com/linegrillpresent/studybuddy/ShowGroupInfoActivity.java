@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -175,6 +176,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                 if (m_Text.equals("null"))
                     m_Text = "The Announcement Has Not Set Yet!";
                 announcementTextView.setText(m_Text);
+                announcementTextView.setMovementMethod(new ScrollingMovementMethod());
                 sendChangeAnnouncementRequest(m_Text);
             }
         });
@@ -285,6 +287,7 @@ public class ShowGroupInfoActivity extends AppCompatActivity {
                             if (announcement.equals("null"))
                                 announcement = "The announcement Has not Set Yet!";
                             announcementTextView.setText(announcement);
+                            announcementTextView.setMovementMethod(new ScrollingMovementMethod());
 
                         } catch (JSONException e) {
                             e.printStackTrace();

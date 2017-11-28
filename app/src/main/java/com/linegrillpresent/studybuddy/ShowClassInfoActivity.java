@@ -48,7 +48,6 @@ public class ShowClassInfoActivity extends AppCompatActivity {
     private Button dropCourse;
     private Activity ctx;
     private String[] listItems;
-
     public ShowClassInfoActivity() {
     }
 
@@ -145,29 +144,32 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         if (selectGroupName.equals("No Group Under This Course Yet!"))
             return;
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Join Group");
 
 
         //final TextView message = new TextView(this);
-        String message = "You have not joined this group yet, Do you want to join the group Now? Please Enter the invite code if this it a private group";
+        //String message = "You have not joined this group yet, Do you want to join the group Now? Please Enter the invite code if this it a private group";
+        String message = "You have not joined this group yet, Do you want to join the group now? ";
         builder.setMessage(message);
 
         // Set up the input
-        final EditText input = new EditText(this);
+        //final EditText input = new EditText(this);
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        input.setLines(1);
-        input.setHint("Invite Code(optional)");
-        builder.setView(input);
+        //input.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        //input.setLines(1);
+        //input.setHint("Invite Code(optional)");
+        //builder.setView(input);
 
         // Set up the buttons
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String invite_code = input.getText().toString();
-                Log.d("ShowClass", invite_code);
-                sendJoinGroupRequest(selectGroupName, invite_code);
+                //String invite_code = input.getText().toString();
+                //Log.d("ShowClass", invite_code);
+                attemptJoinTheGroup(selectGroupName);
+                //sendJoinGroupRequest(selectGroupName, invite_code);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -180,6 +182,78 @@ public class ShowClassInfoActivity extends AppCompatActivity {
         builder.show();
     }
 
+    private void attemptJoinTheGroup(final String groupName) {
+        String staticURL = this.getResources().getString(R.string.deployURL) + "group?";
+        String url = staticURL + "token=" + student.getToken() + "&groupName=" + groupName + "&inviteCode=" + "&action=joinGroup";
+        Log.d("ShowClass", url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String resText = response;
+                        //test.setText("Response is: "+ resText);
+                        if (resText.equals("failed")) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+                            builder.setTitle("Join Group");
+
+
+                            //String message = "You have not joined this group yet, Do you want to join the group Now? Please Enter the invite code if this it a private group";
+                            String message = "This is a private group, you need to enter the invite code:";
+                            builder.setMessage(message);
+
+                            // Set up the input
+                            final EditText input = new EditText(ctx);
+                            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                            input.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                            input.setLines(1);
+                            input.setHint("Invite Code");
+                            builder.setView(input);
+
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String invite_code = input.getText().toString();
+                                    //Log.d("ShowClass", invite_code);
+                                    sendJoinGroupRequest(groupName, invite_code);
+                                }
+                            });
+                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                            builder.show();
+
+                        } else {
+                                    /* success Login
+                                       Save the token in a Bundle object and pass it to the userMainActivity
+                                     */
+                            updateInfo();
+                            goToGroup(groupName);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // access the server fail
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShowClassInfoActivity.this);
+                builder.setMessage("ACCESS SERVER FAILED")
+                        .setNegativeButton("RETRY LATER", null)
+                        .create()
+                        .show();
+            }
+        });
+        // Add the request to the RequestQueue
+        SBRequestQueue.getInstance(this).addToRequestQueue(stringRequest);
+    }
+    private void updateInfo() {
+        Student user = Student.getInstance();
+        user.updateCourseInfo(ctx);
+        user.updateGroupInfo(ctx);
+        Log.d("updateInfo", "updating now!!!!");
+    }
     private void dropCourseWarn() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ShowClassInfoActivity.this);
         builder.setMessage("ARE YOU SURE")
@@ -257,6 +331,7 @@ public class ShowClassInfoActivity extends AppCompatActivity {
                                     /* success Login
                                        Save the token in a Bundle object and pass it to the userMainActivity
                                      */
+                            updateInfo();
                             goToGroup(groupName);
                         }
                     }
